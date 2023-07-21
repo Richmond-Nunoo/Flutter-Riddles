@@ -5,12 +5,11 @@ import 'package:flutter/material.dart';
 
 class ExampleCard extends StatelessWidget {
   final ExampleCandidateModel candidate;
-  final Function() tap;
+
 
   const ExampleCard({
     Key? key,
     required this.candidate,
-    required this.tap,
   }) : super(key: key);
 
   @override
