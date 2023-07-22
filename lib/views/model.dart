@@ -15,24 +15,7 @@ class ExampleCandidateModel {
 }
 
 List<ExampleCandidateModel> candidates = [
-  // ExampleCandidateModel(
-  //   name: 'Eight, 8',
-  //   job: 'Manager',
-  //   city: 'Town',
-  //   color: gradientPink,
-  // ),
-  // ExampleCandidateModel(
-  //   name: 'Seven, 7',
-  //   job: 'Manager',
-  //   city: 'Town',
-  //   color: gradientBlue,
-  // ),
-  // ExampleCandidateModel(
-  //   name: 'Six, 6',
-  //   job: 'Manager',
-  //   city: 'Town',
-  //   color: gradientPurple,
-  // ),
+  
   ExampleCandidateModel(
     name: 'Five, 5',
     job: 'Manager',

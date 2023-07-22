@@ -1,3 +1,4 @@
+import 'package:flashcards_quiz/views/answersmodel.dart';
 import 'package:flashcards_quiz/views/model.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/cupertino.dart';
@@ -5,11 +6,12 @@ import 'package:flutter/material.dart';
 
 class ExampleCard extends StatelessWidget {
   final ExampleCandidateModel candidate;
-
+  final AnswerCandidateModel answerCandidate;
 
   const ExampleCard({
     Key? key,
     required this.candidate,
+    required this.answerCandidate,
   }) : super(key: key);
 
   @override
@@ -113,7 +115,7 @@ class ExampleCard extends StatelessWidget {
             Flexible(
               child: Container(
                 decoration: BoxDecoration(
-                  gradient: candidate.color,
+                  color: answerCandidate.color,
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(10),
                     topRight: Radius.circular(10),
@@ -138,7 +140,7 @@ class ExampleCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        candidate.name!,
+                        answerCandidate.name!,
                         style: const TextStyle(
                           color: Colors.blue,
                           fontWeight: FontWeight.bold,
