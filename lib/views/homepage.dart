@@ -94,7 +94,13 @@ class FlipCardsWidget extends StatelessWidget {
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("Which Widget?"),
+                      Text(
+                        "Which Widget?",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                        ),
+                      ),
                       Text("1/5"),
                     ],
                   ),
@@ -172,7 +178,12 @@ class FlipCardsWidget extends StatelessWidget {
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("Which Widget?"),
+                      Text(
+                        "Which Widget?",
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
                       Text("1/5"),
                     ],
                   ),

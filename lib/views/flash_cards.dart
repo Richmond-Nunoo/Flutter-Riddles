@@ -23,7 +23,7 @@ class MyCustomWidgetState extends State<MyCustomWidget> {
   @override
   void initState() {
     super.initState();
-    // startTimer();
+    startTimer();
   }
 
   void startTimer() {
@@ -145,7 +145,7 @@ class MyCustomWidgetState extends State<MyCustomWidget> {
                 child: const Text(
                   "Reset Game",
                   style: TextStyle(
-                    color: Colors.blue,
+                    color: bgColor,
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
                   ),
