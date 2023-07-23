@@ -1,8 +1,7 @@
 import 'dart:async';
 import 'package:appinio_swiper/appinio_swiper.dart';
 import 'package:flashcards_quiz/views/answersmodel.dart';
-import 'package:flashcards_quiz/views/buttons.dart';
-import 'package:flashcards_quiz/views/example_cards.dart';
+import 'package:flashcards_quiz/views/homepage.dart';
 import 'package:flashcards_quiz/views/model.dart';
 import 'package:flashcards_quiz/views/quiz.dart';
 import 'package:flutter/cupertino.dart';
@@ -18,13 +17,13 @@ class MyCustomWidget extends StatefulWidget {
 class MyCustomWidgetState extends State<MyCustomWidget> {
   final AppinioSwiperController controller = AppinioSwiperController();
 
-  int _timerSeconds = 120;
+  int _timerSeconds = 60;
   Timer? _timer;
 
   @override
   void initState() {
     super.initState();
-    //   startTimer();
+    // startTimer();
   }
 
   void startTimer() {
@@ -55,87 +54,105 @@ class MyCustomWidgetState extends State<MyCustomWidget> {
 
   @override
   Widget build(BuildContext context) {
-    const Color bgColor = Color(0xFFB9E9FC);
+    const Color bgColor = Color(0xFF05BFDB);
+    const Color bgColor3 = Color(0xFF0A4D68);
     return Scaffold(
-      backgroundColor: bgColor,
-      floatingActionButton: FloatingActionButton.small(
-        onPressed: () {},
-        child: unswipeButton(controller),
-      ),
+      backgroundColor: bgColor3,
       body: SafeArea(
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 40,
-            ),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              alignment: Alignment.topCenter,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      IconButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          icon: const Icon(
-                            CupertinoIcons.clear,
-                            color: Colors.white,
-                            weight: 10,
-                          )),
-                      Expanded(
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(12),
-                          child: LinearProgressIndicator(
-                            minHeight: 10,
-                            value: 1 - (_timerSeconds / 120),
-                            backgroundColor: Colors.blueGrey,
-                            color: Colors.blueGrey,
-                            valueColor: const AlwaysStoppedAnimation(bgColor),
+        child: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(
+                height: 40,
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                alignment: Alignment.topCenter,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        IconButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            icon: const Icon(
+                              CupertinoIcons.clear,
+                              color: Colors.white,
+                              weight: 10,
+                            )),
+                        Expanded(
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(12),
+                            child: LinearProgressIndicator(
+                              minHeight: 10,
+                              value: 1 - (_timerSeconds / 60),
+                              backgroundColor: Colors.blue.shade100,
+                              color: Colors.blueGrey,
+                              valueColor: const AlwaysStoppedAnimation(bgColor),
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.70,
-              child: AppinioSwiper(
-                loop: true,
-                backgroundCardsCount: 2,
-                swipeOptions: const AppinioSwipeOptions.all(),
-                unlimitedUnswipe: true,
-                controller: controller,
-                unswipe: _unswipe,
-                onSwiping: (AppinioSwiperDirection direction) {
-                  print("${direction.index}");
-                  debugPrint(direction.toString());
-                },
-                onSwipe: _swipe,
-                padding: const EdgeInsets.only(
-                  left: 25,
-                  right: 25,
-                  top: 40,
-                  bottom: 40,
+                      ],
+                    ),
+                  ],
                 ),
-                onEnd: _onEnd,
-                cardsCount: candidates.length,
-                cardsBuilder: (BuildContext context, int index) {
-                  var cardIndex = candidates[index];
-                  var answerQ = answerCandidates[index];
-                  print(index);
-                  return ExampleCard(
-                    candidate: cardIndex,
-                    answerCandidate: answerQ,
-                  );
-                },
               ),
-            ),
-          ],
+              Container(
+                width: MediaQuery.of(context).size.width * 0.95,
+                height: MediaQuery.of(context).size.height * 0.60,
+                child: AppinioSwiper(
+                  loop: true,
+                  backgroundCardsCount: 2,
+                  swipeOptions: const AppinioSwipeOptions.all(),
+                  unlimitedUnswipe: true,
+                  controller: controller,
+                  unswipe: _unswipe,
+                  onSwiping: (AppinioSwiperDirection direction) {
+                    print("${direction.index}");
+                    debugPrint(direction.toString());
+                  },
+                  onSwipe: _swipe,
+                  onEnd: _onEnd,
+                  cardsCount: candidates.length,
+                  cardsBuilder: (BuildContext context, int index) {
+                    var cardIndex = candidates[index];
+                    var answerQ = answerCandidates[index];
+                    print(index);
+                    return FlipCardsWidget(
+                      candidate: cardIndex,
+                      answerCandidate: answerQ,
+                      bgColor: bgColor,
+                    );
+                  },
+                ),
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+              Center(
+                  child: ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.white),
+                  fixedSize: MaterialStateProperty.all(
+                    Size(MediaQuery.of(context).size.width * 0.75, 40),
+                  ),
+                  elevation: MaterialStateProperty.all(1),
+                ),
+                onPressed: () => controller.unswipe(),
+                child: const Text(
+                  "Reset Game",
+                  style: TextStyle(
+                    color: Colors.blue,
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ))
+            ],
+          ),
         ),
       ),
     );

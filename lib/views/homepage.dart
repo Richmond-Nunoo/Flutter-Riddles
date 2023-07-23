@@ -1,5 +1,8 @@
+import 'package:flashcards_quiz/views/answersmodel.dart';
 import 'package:flashcards_quiz/views/flash_cards.dart';
+import 'package:flashcards_quiz/views/model.dart';
 import 'package:flashcards_quiz/views/widget_time.dart';
+import 'package:flip_card/flip_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -8,11 +11,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const Color bgColor = Color(0xFF60ABFB);
-    const Color bgColor3 = Color(0xFF5170FD);
-
     return Scaffold(
-      backgroundColor: bgColor3,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(top: 20, left: 10, right: 10),
@@ -21,176 +20,194 @@ class HomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    children: [
-                      IconButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          icon: const Icon(
-                            CupertinoIcons.clear,
-                            color: Colors.white,
-                            weight: 10,
-                          )),
-                      Expanded(
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(12),
-                          child: LinearProgressIndicator(
-                            minHeight: 10,
-                            value: 0.5,
-                            backgroundColor: Colors.blue.shade100,
-                            color: Colors.blueGrey,
-                            valueColor: AlwaysStoppedAnimation(bgColor),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                Text(
+                  getGreeting(),
                 ),
-                // Text(
-                //   getGreeting(),
-                // ),
-                // const Text("Flutter Dev."),
-                // const Padding(
-                //   padding:
-                //       EdgeInsets.only(top: 20, bottom: 20, left: 10, right: 10),
-                //   child: Text(
-                //     "What Do you want to test yourself on?",
-                //     style: TextStyle(
-                //       fontSize: 24,
-                //       fontWeight: FontWeight.bold,
-                //     ),
-                //     textAlign: TextAlign.center,
-                //   ),
-                // ),
-                Stack(
-                  fit: StackFit.loose,
-                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        print("lol stack");
-                      },
-                      child: Container(
-                        height: 400,
-                        width: MediaQuery.of(context).size.width * 0.75,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: bgColor,
-                        ),
-                        child: const Padding(
-                          padding: EdgeInsets.all(16.0),
-                          child: Column(
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text("Which Widget?"),
-                                  Text("1/5"),
-                                ],
-                              ),
-                              Spacer(),
-                              Align(
-                                alignment: Alignment.bottomCenter,
-                                child: Text("Tap to Flip"),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
+                const Text("Flutter Dev."),
+                const Padding(
+                  padding:
+                      EdgeInsets.only(top: 20, bottom: 20, left: 10, right: 10),
+                  child: Text(
+                    "What Do you want to test yourself on?",
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
                     ),
-                    Positioned(
-                      left: -120,
-                      top: 30,
-                      child: Container(
-                        height: 200,
-                        width: 200,
-                        decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.5),
-                          shape: BoxShape.circle,
-                        ),
-                        child: Center(
-                          child: Container(
-                            height: 100,
-                            width: 100,
-                            decoration: const BoxDecoration(
-                              color: bgColor,
-                              shape: BoxShape.circle,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      right: -100,
-                      bottom: 20,
-                      child: Container(
-                        height: 200,
-                        width: 200,
-                        decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.5),
-                          shape: BoxShape.circle,
-                        ),
-                        child: Center(
-                          child: Container(
-                            height: 100,
-                            width: 100,
-                            decoration: const BoxDecoration(
-                              color: bgColor,
-                              shape: BoxShape.circle,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                    textAlign: TextAlign.center,
+                  ),
                 ),
                 const SizedBox(
                   height: 20,
                 ),
                 Center(
                   child: ElevatedButton(
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.white),
-                      fixedSize: MaterialStateProperty.all(
-                        Size(MediaQuery.of(context).size.width * 0.75, 40),
-                      ),
-                      elevation: MaterialStateProperty.all(1),
-                    ),
-                    onPressed: () {},
-                    child: const Text(
-                      "Reset Game",
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const MyCustomWidget(),
+                        ),
+                      );
+                    },
+                    child: const Text("Flash Cards"),
                   ),
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
-                // Center(
-                //   child: ElevatedButton(
-                //     onPressed: () {
-                //       Navigator.push(
-                //         context,
-                //         MaterialPageRoute(
-                //           builder: (context) => const MyCustomWidget(),
-                //         ),
-                //       );
-                //     },
-                //     child: const Text("Flash Cards"),
-                //   ),
-                // ),
               ],
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class FlipCardsWidget extends StatelessWidget {
+  const FlipCardsWidget({
+    super.key,
+    required this.bgColor,
+    required this.candidate,
+    required this.answerCandidate,
+  });
+
+  final Color bgColor;
+
+  final ExampleCandidateModel candidate;
+  final AnswerCandidateModel answerCandidate;
+
+  @override
+  Widget build(BuildContext context) {
+    return FlipCard(
+      front: Stack(
+        fit: StackFit.loose,
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        children: [
+          Container(
+            //width: MediaQuery.of(context).size.width * 0.75,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: bgColor,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: [
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Which Widget?"),
+                      Text("1/5"),
+                    ],
+                  ),
+                  const Spacer(),
+                  Center(
+                    child: Text(candidate.name!),
+                  ),
+                  const Spacer(),
+                  const Text("Tap to Flip")
+                ],
+              ),
+            ),
+          ),
+          Positioned(
+            left: -120,
+            top: 30,
+            child: Container(
+              height: 200,
+              width: 200,
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.5),
+                shape: BoxShape.circle,
+              ),
+              child: Center(
+                child: Container(
+                  height: 100,
+                  width: 100,
+                  decoration: BoxDecoration(
+                    color: bgColor,
+                    shape: BoxShape.circle,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            right: -100,
+            bottom: 40,
+            child: Container(
+              height: 200,
+              width: 200,
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.5),
+                shape: BoxShape.circle,
+              ),
+              child: Center(
+                child: Container(
+                  height: 100,
+                  width: 100,
+                  decoration: BoxDecoration(
+                    color: bgColor,
+                    shape: BoxShape.circle,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+      back: Stack(
+        fit: StackFit.loose,
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        children: [
+          Container(
+            height: 400,
+            width: MediaQuery.of(context).size.width * 0.75,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: bgColor,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: [
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Which Widget?"),
+                      Text("1/5"),
+                    ],
+                  ),
+                  const Spacer(),
+                  Center(
+                    child: Text(answerCandidate.name!),
+                  ),
+                  const Spacer(),
+                ],
+              ),
+            ),
+          ),
+          Positioned(
+            left: -120,
+            top: 50,
+            child: Container(
+              height: 200,
+              width: 200,
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.5),
+                shape: BoxShape.circle,
+              ),
+              child: Center(
+                child: Container(
+                  height: 100,
+                  width: 100,
+                  decoration: BoxDecoration(
+                    color: bgColor,
+                    shape: BoxShape.circle,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
