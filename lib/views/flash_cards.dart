@@ -83,11 +83,18 @@ class MyCustomWidgetState extends State<MyCustomWidget> {
                           icon: const Icon(
                             CupertinoIcons.clear,
                             color: Colors.white,
+                            weight: 10,
                           )),
                       Expanded(
-                        child: LinearProgressIndicator(
-                          minHeight: 10,
-                          value: 1 - (_timerSeconds / 120),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(12),
+                          child: LinearProgressIndicator(
+                            minHeight: 10,
+                            value: 1 - (_timerSeconds / 120),
+                            backgroundColor: Colors.blueGrey,
+                            color: Colors.blueGrey,
+                            valueColor: const AlwaysStoppedAnimation(bgColor),
+                          ),
                         ),
                       ),
                     ],
