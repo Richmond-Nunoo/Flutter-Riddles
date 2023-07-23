@@ -37,10 +37,10 @@ class HomePage extends StatelessWidget {
                       Expanded(
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(12),
-                          child: const LinearProgressIndicator(
+                          child: LinearProgressIndicator(
                             minHeight: 10,
                             value: 0.5,
-                            backgroundColor: Colors.blueGrey,
+                            backgroundColor: Colors.blue.shade100,
                             color: Colors.blueGrey,
                             valueColor: AlwaysStoppedAnimation(bgColor),
                           ),
