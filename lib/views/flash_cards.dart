@@ -100,12 +100,12 @@ class MyCustomWidgetState extends State<MyCustomWidget> {
                   ],
                 ),
               ),
-              Container(
+              SizedBox(
                 width: MediaQuery.of(context).size.width * 0.95,
                 height: MediaQuery.of(context).size.height * 0.60,
                 child: AppinioSwiper(
                   loop: true,
-                  backgroundCardsCount: 2,
+                  backgroundCardsCount: 1,
                   swipeOptions: const AppinioSwipeOptions.all(),
                   unlimitedUnswipe: true,
                   controller: controller,

@@ -3,7 +3,6 @@ import 'package:flashcards_quiz/views/flash_cards.dart';
 import 'package:flashcards_quiz/views/model.dart';
 import 'package:flashcards_quiz/views/widget_time.dart';
 import 'package:flip_card/flip_card.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -11,7 +10,9 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const Color bgColor3 = Color(0xFF0A4D68);
     return Scaffold(
+      backgroundColor: bgColor3,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(top: 20, left: 10, right: 10),
