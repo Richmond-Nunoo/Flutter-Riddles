@@ -23,7 +23,7 @@ class MyCustomWidgetState extends State<MyCustomWidget> {
   @override
   void initState() {
     super.initState();
-    startTimer();
+    // startTimer();
   }
 
   void startTimer() {
@@ -143,7 +143,7 @@ class MyCustomWidgetState extends State<MyCustomWidget> {
                 ),
                 onPressed: () => controller.unswipe(),
                 child: const Text(
-                  "Reset Game",
+                  "Reset Card",
                   style: TextStyle(
                     color: bgColor,
                     fontSize: 15,
