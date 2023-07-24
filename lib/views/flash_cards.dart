@@ -54,8 +54,8 @@ class MyCustomWidgetState extends State<MyCustomWidget> {
 
   @override
   Widget build(BuildContext context) {
-    const Color bgColor = Color(0xFF05BFDB);
-    const Color bgColor3 = Color(0xFF0A4D68);
+    const Color bgColor = Color(0xFF4993FA);
+    const Color bgColor3 = Color(0xFF5170FD);
     return Scaffold(
       backgroundColor: bgColor3,
       body: SafeArea(
