@@ -125,6 +125,8 @@ class MyCustomWidgetState extends State<MyCustomWidget> {
                       candidate: cardIndex,
                       answerCandidate: answerQ,
                       bgColor: bgColor,
+                      cardsLenght: candidates.length,
+                      currentIndex: index + 1,
                     );
                   },
                 ),

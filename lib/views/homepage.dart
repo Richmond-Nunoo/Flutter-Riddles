@@ -67,9 +67,13 @@ class FlipCardsWidget extends StatelessWidget {
     required this.bgColor,
     required this.candidate,
     required this.answerCandidate,
+    required this.currentIndex,
+    required this.cardsLenght,
   });
 
   final Color bgColor;
+  final int currentIndex;
+  final int cardsLenght;
 
   final ExampleCandidateModel candidate;
   final AnswerCandidateModel answerCandidate;
@@ -102,7 +106,7 @@ class FlipCardsWidget extends StatelessWidget {
                             .copyWith(color: Colors.white),
                       ),
                       Text(
-                        "1/5",
+                        "$currentIndex/$cardsLenght",
                         style: Theme.of(context)
                             .textTheme
                             .bodySmall!
