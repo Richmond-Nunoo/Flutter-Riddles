@@ -12,7 +12,7 @@ class FlutterTopics {
       {required this.id,
       required this.topicColor,
       required this.topicIcon,
-      required this.topicName});
+      required this.topicName,});
 }
 
 final List<FlutterTopics> flutterTopicsList = [

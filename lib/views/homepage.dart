@@ -19,7 +19,7 @@ class HomePage extends StatelessWidget {
         backgroundColor: bgColor3,
         elevation: 0,
         title: Text(
-          "Flutter Riddles",
+          "Flutter Riddle",
           style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                 color: Colors.white,
                 fontSize: 18,
@@ -69,38 +69,43 @@ class HomePage extends StatelessWidget {
               itemCount: flutterTopicsList.length,
               itemBuilder: (context, index) {
                 final topicsData = flutterTopicsList[index];
-                return Card(
-                  color: bgColor,
-                  elevation: 10,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Icon(
-                          topicsData.topicIcon,
-                          color: Colors.white,
-                          size: 55,
-                        ),
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        Text(
-                          topicsData.topicName,
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context)
-                              .textTheme
-                              .headlineSmall!
-                              .copyWith(
-                                fontSize: 18,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w300,
-                              ),
-                        )
-                      ],
+                return GestureDetector(
+                  onTap: () {
+                    print(topicsData.topicName);
+                  },
+                  child: Card(
+                    color: bgColor,
+                    elevation: 10,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Icon(
+                            topicsData.topicIcon,
+                            color: Colors.white,
+                            size: 55,
+                          ),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          Text(
+                            topicsData.topicName,
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context)
+                                .textTheme
+                                .headlineSmall!
+                                .copyWith(
+                                  fontSize: 18,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 );
