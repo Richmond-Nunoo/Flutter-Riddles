@@ -5,8 +5,6 @@ import 'package:flip_card/flip_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
-
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -64,27 +62,18 @@ class HomePage extends StatelessWidget {
                 crossAxisCount: 2,
                 mainAxisSpacing: 10,
                 crossAxisSpacing: 10,
-                childAspectRatio: 0.75,
+                childAspectRatio: 0.70,
               ),
               shrinkWrap: true,
               physics: const BouncingScrollPhysics(),
               itemCount: flutterTopicsList.length,
               itemBuilder: (context, index) {
                 final topicsData = flutterTopicsList[index];
-                return Container(
-                  height: 500,
-                  width: 160,
-                  decoration: BoxDecoration(
-                    color: bgColor,
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: [
-                      BoxShadow(
-                        color: CupertinoColors.systemGrey.withOpacity(0.2),
-                        spreadRadius: 3,
-                        blurRadius: 7,
-                        //     offset: const Offset(0, 3),
-                      )
-                    ],
+                return Card(
+                  color: bgColor,
+                  elevation: 10,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
                   ),
                   child: Center(
                     child: Column(
