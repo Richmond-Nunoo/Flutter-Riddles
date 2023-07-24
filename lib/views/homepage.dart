@@ -36,29 +36,13 @@ class HomePage extends StatelessWidget {
         leadingWidth: 200,
         backgroundColor: bgColor3,
         elevation: 0,
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 8),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                getGreeting(),
-                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                      color: Colors.white,
-                      //  fontSize: 16,
-                    ),
+        title: Text(
+          "Flutter Riddles",
+          style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.w500,
               ),
-              Text(
-                "Flutter Citizen.",
-                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                    ),
-              ),
-            ],
-          ),
         ),
         actions: [
           IconButton(
