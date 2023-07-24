@@ -91,25 +91,43 @@ class FlipCardsWidget extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 children: [
-                  const Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
                         "Which Widget?",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                        ),
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodySmall!
+                            .copyWith(color: Colors.white),
                       ),
-                      Text("1/5"),
+                      Text(
+                        "1/5",
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodySmall!
+                            .copyWith(color: Colors.white),
+                      ),
                     ],
                   ),
                   const Spacer(),
                   Center(
-                    child: Text(candidate.name!),
+                    child: Text(
+                      candidate.name!,
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                            color: Colors.white,
+                          ),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                   const Spacer(),
-                  const Text("Tap to Flip")
+                  Text(
+                    "Tap to Flip",
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodySmall!
+                        .copyWith(color: Colors.white),
+                  )
                 ],
               ),
             ),
@@ -165,8 +183,8 @@ class FlipCardsWidget extends StatelessWidget {
         clipBehavior: Clip.antiAliasWithSaveLayer,
         children: [
           Container(
-            height: 400,
-            width: MediaQuery.of(context).size.width * 0.75,
+            // height: 400,
+            // width: MediaQuery.of(context).size.width * 0.75,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               color: bgColor,
@@ -175,21 +193,27 @@ class FlipCardsWidget extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 children: [
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Which Widget?",
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                      Text("1/5"),
-                    ],
-                  ),
+                  // const Row(
+                  //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //   children: [
+                  //     Text(
+                  //       "Which Widget?",
+                  //       style: TextStyle(
+                  //         color: Colors.white,
+                  //       ),
+                  //     ),
+                  //     Text("1/5"),
+                  //   ],
+                  // ),
                   const Spacer(),
                   Center(
-                    child: Text(answerCandidate.name!),
+                    child: Text(
+                      answerCandidate.name!,
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                            color: Colors.white,
+                          ),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                   const Spacer(),
                 ],
