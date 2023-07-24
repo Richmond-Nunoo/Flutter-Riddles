@@ -1,27 +1,11 @@
 import 'package:flashcards_quiz/views/answersmodel.dart';
 import 'package:flashcards_quiz/views/category_model.dart';
 import 'package:flashcards_quiz/views/model.dart';
-import 'package:flashcards_quiz/views/widget_time.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class CirclePainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    Paint paint = Paint()
-      ..color = Colors.black
-      ..style = PaintingStyle.fill;
 
-    canvas.drawCircle(
-        Offset(size.width / 2, size.height / 2), size.width / 2, paint);
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) {
-    return true;
-  }
-}
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
