@@ -6,50 +6,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 
-class MyCustomWidget extends StatefulWidget {
+class NewCard extends StatefulWidget {
   final String topicName;
   final List<dynamic> typeOfTopic;
-  const MyCustomWidget({super.key, required this.typeOfTopic, required this.topicName});
+  const NewCard(
+      {super.key, required this.topicName, required this.typeOfTopic});
 
   @override
-  MyCustomWidgetState createState() => MyCustomWidgetState();
+  State<NewCard> createState() => _NewCardState();
 }
 
-class MyCustomWidgetState extends State<MyCustomWidget> {
+class _NewCardState extends State<NewCard> {
   final AppinioSwiperController controller = AppinioSwiperController();
-
-  int _timerSeconds = 60;
-  Timer? _timer;
-
-  @override
-  void initState() {
-    super.initState();
-    //   startTimer();
-  }
-
-  void startTimer() {
-    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      setState(() {
-        if (_timerSeconds > 0) {
-          _timerSeconds--;
-        } else {
-          _timer?.cancel();
-          navigateToNewScreen();
-        }
-      });
-    });
-  }
-
-  void navigateToNewScreen() {
-    Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => const QuizScreen()));
-  }
-
-  @override
-  void dispose() {
-    _timer?.cancel();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,13 +25,6 @@ class MyCustomWidgetState extends State<MyCustomWidget> {
     const Color bgColor3 = Color(0xFF5170FD);
 
     final randomQuestions = getRandomQuestions(widget.typeOfTopic, 4);
-
-    // Get a list of 3 randomly selected WidgetQuestion objects
-    // Map<WidgetQuestion, Option> randomQuestionsMap =
-    //     getRandomQuestions(widgetQuestionsList, 4);
-
-    // List<WidgetQuestion> randomQuestions = randomQuestionsMap.keys.toList();
-    // List<Option> correctAnswers = randomQuestionsMap.values.toList();
 
     return Scaffold(
       backgroundColor: bgColor3,
@@ -80,7 +41,6 @@ class MyCustomWidgetState extends State<MyCustomWidget> {
                 alignment: Alignment.topCenter,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-            
                   children: [
                     Row(
                       children: [
@@ -93,18 +53,7 @@ class MyCustomWidgetState extends State<MyCustomWidget> {
                               color: Colors.white,
                               weight: 10,
                             )),
-                        Expanded(
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(12),
-                            child: LinearProgressIndicator(
-                              minHeight: 10,
-                              value: 1 - (_timerSeconds / 60),
-                              backgroundColor: Colors.blue.shade100,
-                              color: Colors.blueGrey,
-                              valueColor: const AlwaysStoppedAnimation(bgColor),
-                            ),
-                          ),
-                        ),
+                        const ProgressIndicator(),
                       ],
                     ),
                   ],
@@ -134,7 +83,8 @@ class MyCustomWidgetState extends State<MyCustomWidget> {
                       cardsLenght: randomQuestions.length,
                       currentIndex: index + 1,
                       answer: cardIndex.correctAnswer.text,
-                      question: cardIndex.text, currentTopic: widget.topicName,
+                      question: cardIndex.text,
+                      currentTopic: widget.topicName,
                     );
                   },
                 ),
@@ -163,6 +113,67 @@ class MyCustomWidgetState extends State<MyCustomWidget> {
               ))
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class ProgressIndicator extends StatefulWidget {
+  const ProgressIndicator({
+    super.key,
+  });
+
+  @override
+  State<ProgressIndicator> createState() => _ProgressIndicatorState();
+}
+
+class _ProgressIndicatorState extends State<ProgressIndicator> {
+  int timerSeconds = 60;
+  Timer? _timer;
+
+  @override
+  void initState() {
+    super.initState();
+   // startTimer();
+  }
+
+  void startTimer() {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() {
+        if (timerSeconds > 0) {
+          timerSeconds--;
+        } else {
+          _timer?.cancel();
+          navigateToNewScreen();
+        }
+      });
+    });
+  }
+
+  void navigateToNewScreen() {
+    Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => const QuizScreen()));
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    const Color bgColor = Color(0xFF4993FA);
+    return Expanded(
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(12),
+        child: LinearProgressIndicator(
+          minHeight: 10,
+          value: 1 - (timerSeconds / 60),
+          backgroundColor: Colors.blue.shade100,
+          color: Colors.blueGrey,
+          valueColor: const AlwaysStoppedAnimation(bgColor),
         ),
       ),
     );

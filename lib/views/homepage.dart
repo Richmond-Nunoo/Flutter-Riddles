@@ -1,5 +1,5 @@
 import 'package:flashcards_quiz/models/flutter_topics_model.dart';
-import 'package:flashcards_quiz/views/flash_cards_screen.dart';
+import 'package:flashcards_quiz/views/flashcard_screen.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 
@@ -78,7 +78,7 @@ class HomePage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => MyCustomWidget(
+                          builder: (context) => NewCard(
                             typeOfTopic: topicsData.topicQuestions,
                             topicName: topicsData.topicName,
                           ),
