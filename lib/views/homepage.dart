@@ -74,9 +74,13 @@ class HomePage extends StatelessWidget {
                 return GestureDetector(
                   onTap: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const MyCustomWidget()));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MyCustomWidget(
+                          typeOfTopic: topicsData.topicQuestions,
+                        ),
+                      ),
+                    );
                     print(topicsData.topicName);
                   },
                   child: Card(
@@ -142,17 +146,17 @@ class FlipCardsWidget extends StatelessWidget {
   const FlipCardsWidget({
     super.key,
     required this.bgColor,
-    required this.candidate,
     required this.currentIndex,
     required this.cardsLenght,
+    required this.question,
+    required this.answer,
   });
 
   final Color bgColor;
   final int currentIndex;
   final int cardsLenght;
-
-  final WidgetQuestion candidate;
-
+  final String question;
+  final String answer;
 
   @override
   Widget build(BuildContext context) {
@@ -193,7 +197,7 @@ class FlipCardsWidget extends StatelessWidget {
                   const Spacer(),
                   Center(
                     child: Text(
-                      candidate.text,
+                      question,
                       style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                             color: Colors.white,
                             fontSize: 24,
@@ -290,7 +294,7 @@ class FlipCardsWidget extends StatelessWidget {
                   const Spacer(),
                   Center(
                     child: Text(
-                      candidate.correctAnswer.text,
+                      answer,
                       style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                             color: Colors.white,
                           ),

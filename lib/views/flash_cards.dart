@@ -1,14 +1,14 @@
 import 'dart:async';
 import 'package:appinio_swiper/appinio_swiper.dart';
 import 'package:flashcards_quiz/views/homepage.dart';
-import 'package:flashcards_quiz/views/questions_model.dart';
 import 'package:flashcards_quiz/views/quiz.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 
 class MyCustomWidget extends StatefulWidget {
-  const MyCustomWidget({super.key});
+  final List<dynamic> typeOfTopic;
+  const MyCustomWidget({super.key, required this.typeOfTopic});
 
   @override
   MyCustomWidgetState createState() => MyCustomWidgetState();
@@ -41,7 +41,6 @@ class MyCustomWidgetState extends State<MyCustomWidget> {
   }
 
   void navigateToNewScreen() {
-    // Replace 'NewScreen()' with the Widget for your new screen.
     Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (context) => const QuizScreen()));
   }
@@ -56,12 +55,16 @@ class MyCustomWidgetState extends State<MyCustomWidget> {
   Widget build(BuildContext context) {
     const Color bgColor = Color(0xFF4993FA);
     const Color bgColor3 = Color(0xFF5170FD);
-    // Get a list of 3 randomly selected WidgetQuestion objects
-    Map<WidgetQuestion, Option> randomQuestionsMap =
-        getRandomQuestions(widgetQuestionsList, 4);
 
-    List<WidgetQuestion> randomQuestions = randomQuestionsMap.keys.toList();
-    List<Option> correctAnswers = randomQuestionsMap.values.toList();
+    final randomQuestions = getRandomQuestions(widget.typeOfTopic, 4);
+
+
+    // Get a list of 3 randomly selected WidgetQuestion objects
+    // Map<WidgetQuestion, Option> randomQuestionsMap =
+    //     getRandomQuestions(widgetQuestionsList, 4);
+
+    // List<WidgetQuestion> randomQuestions = randomQuestionsMap.keys.toList();
+    // List<Option> correctAnswers = randomQuestionsMap.values.toList();
 
     return Scaffold(
       backgroundColor: bgColor3,
@@ -126,16 +129,11 @@ class MyCustomWidgetState extends State<MyCustomWidget> {
                   cardsCount: randomQuestions.length,
                   cardsBuilder: (BuildContext context, int index) {
                     var cardIndex = randomQuestions[index];
-                    var correctAnswersData = correctAnswers[index];
-                    //   var answerQ = answerCandidates[index];
-                    print("Quotes $index");
-                    print(correctAnswersData.text);
                     return FlipCardsWidget(
-                      candidate: cardIndex,
-                      //   answerCandidate: answerQ,
+                   
                       bgColor: bgColor,
                       cardsLenght: randomQuestions.length,
-                      currentIndex: index + 1,
+                      currentIndex: index + 1, answer: cardIndex.correctAnswer.text, question:  cardIndex.text,
                     );
                   },
                 ),
@@ -170,18 +168,11 @@ class MyCustomWidgetState extends State<MyCustomWidget> {
   }
 }
 
-Map<WidgetQuestion, Option> getRandomQuestions(
-    List<WidgetQuestion> allQuestions, int count) {
+List<dynamic> getRandomQuestions(List<dynamic> allQuestions, int count) {
   if (count >= allQuestions.length) {
-    // If count is larger than the number of available questions, return all questions with their correct answers.
-    return {
-      for (var question in allQuestions)
-        question: question.options.firstWhere((option) => option.isCorrect)
-    };
+    return List.from(allQuestions);
   }
-
-  final randomQuestions = <WidgetQuestion>[];
-  final randomAnswers = <Option>[];
+  List<dynamic> randomQuestions = [];
 
   List<int> indexes = List.generate(allQuestions.length, (index) => index);
   final random = Random();
@@ -191,14 +182,41 @@ Map<WidgetQuestion, Option> getRandomQuestions(
     final selectedQuestionIndex = indexes[randomIndex];
     final selectedQuestion = allQuestions[selectedQuestionIndex];
     randomQuestions.add(selectedQuestion);
-    randomAnswers
-        .add(selectedQuestion.options.firstWhere((option) => option.isCorrect));
 
     indexes.removeAt(randomIndex);
   }
-
-  return Map.fromIterables(randomQuestions, randomAnswers);
+  return randomQuestions;
 }
+
+// Map<WidgetQuestion, Option> getRandomQuestions(
+//     List<WidgetQuestion> allQuestions, int count) {
+//   if (count >= allQuestions.length) {
+//     // If count is larger than the number of available questions, return all questions with their correct answers.
+//     return {
+//       for (var question in allQuestions)
+//         question: question.options.firstWhere((option) => option.isCorrect)
+//     };
+//   }
+
+//   final randomQuestions = <WidgetQuestion>[];
+//   final randomAnswers = <Option>[];
+
+//   List<int> indexes = List.generate(allQuestions.length, (index) => index);
+//   final random = Random();
+
+//   while (randomQuestions.length < count) {
+//     final randomIndex = random.nextInt(indexes.length);
+//     final selectedQuestionIndex = indexes[randomIndex];
+//     final selectedQuestion = allQuestions[selectedQuestionIndex];
+//     randomQuestions.add(selectedQuestion);
+//     randomAnswers
+//         .add(selectedQuestion.options.firstWhere((option) => option.isCorrect));
+
+//     indexes.removeAt(randomIndex);
+//   }
+
+//   return Map.fromIterables(randomQuestions, randomAnswers);
+// }
 
 void _swipe(int index, AppinioSwiperDirection direction) {
   print("the card was swiped to the: ${direction.name}");

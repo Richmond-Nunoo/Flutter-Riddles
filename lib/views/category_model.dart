@@ -1,5 +1,6 @@
+import 'package:flashcards_quiz/views/questions_model.dart';
+import 'package:flashcards_quiz/views/state_questions_model.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
 const Color bgColor = Color(0xFF4993FA);
 
@@ -8,11 +9,14 @@ class FlutterTopics {
   final String topicName;
   final IconData topicIcon;
   final Color topicColor;
-  FlutterTopics(
-      {required this.id,
-      required this.topicColor,
-      required this.topicIcon,
-      required this.topicName,});
+  final List<dynamic> topicQuestions;
+  FlutterTopics({
+    required this.id,
+    required this.topicColor,
+    required this.topicIcon,
+    required this.topicName,
+    required this.topicQuestions,
+  });
 }
 
 final List<FlutterTopics> flutterTopicsList = [
@@ -21,23 +25,27 @@ final List<FlutterTopics> flutterTopicsList = [
     topicColor: bgColor,
     topicIcon: CupertinoIcons.square_stack_3d_up,
     topicName: "Widgets",
+    topicQuestions: widgetQuestionsList,
   ),
   FlutterTopics(
     id: 1,
     topicColor: bgColor,
     topicIcon: CupertinoIcons.arrow_2_circlepath,
     topicName: "State Management",
+    topicQuestions: stateQuestions,
   ),
   FlutterTopics(
     id: 2,
     topicColor: bgColor,
     topicIcon: CupertinoIcons.graph_circle,
     topicName: "App LifeCycle",
+    topicQuestions: widgetQuestionsList,
   ),
   FlutterTopics(
     id: 3,
     topicColor: bgColor,
     topicIcon: CupertinoIcons.rectangle_arrow_up_right_arrow_down_left,
     topicName: "Layouts and UI",
+    topicQuestions: widgetQuestionsList,
   ),
 ];

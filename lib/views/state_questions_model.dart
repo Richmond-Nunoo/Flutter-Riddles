@@ -4,6 +4,7 @@ class StateQuestion {
   final List<Option> options;
   bool isLocked;
   Option? selectedOption;
+  Option? correctAnswer;
 
   StateQuestion({
     required this.text,
@@ -11,6 +12,7 @@ class StateQuestion {
     this.isLocked = false,
     this.selectedOption,
     required this.id,
+    required this.correctAnswer,
   });
 }
 
@@ -24,7 +26,7 @@ class Option {
   });
 }
 
-final questions = [
+final stateQuestions = [
   StateQuestion(
     text:
         "I am a simple method to manage state within a StatefulWidget. What am I?",
@@ -35,6 +37,7 @@ final questions = [
       const Option(text: "Riverpod", isCorrect: false),
     ],
     id: 0,
+    correctAnswer: const Option(text: "setState", isCorrect: true),
   ),
   StateQuestion(
     text:
@@ -46,6 +49,7 @@ final questions = [
       const Option(text: "setState", isCorrect: false),
     ],
     id: 1,
+    correctAnswer: const Option(text: "Mobx", isCorrect: true),
   ),
   StateQuestion(
     text:
@@ -57,6 +61,7 @@ final questions = [
       const Option(text: "Mobx", isCorrect: false),
     ],
     id: 2,
+    correctAnswer: const Option(text: "Riverpod", isCorrect: true),
   ),
 
   StateQuestion(
@@ -69,6 +74,7 @@ final questions = [
       const Option(text: "Get_it", isCorrect: false),
     ],
     id: 3,
+    correctAnswer: const Option(text: "Getx", isCorrect: true),
   ),
   // other 4
   StateQuestion(
@@ -81,6 +87,7 @@ final questions = [
       const Option(text: "Getx", isCorrect: true),
     ],
     id: 4,
+    correctAnswer: const Option(text: "Getx", isCorrect: true),
   ),
   StateQuestion(
     text: "I use streams and sinks for state management, who am I?",
@@ -91,6 +98,7 @@ final questions = [
       const Option(text: "InheritedWidgets", isCorrect: false),
     ],
     id: 5,
+    correctAnswer: const Option(text: "Bloc", isCorrect: true),
   ),
 
   StateQuestion(
@@ -102,6 +110,7 @@ final questions = [
       const Option(text: "Hooks", isCorrect: true),
     ],
     id: 6,
+    correctAnswer: const Option(text: "Hooks", isCorrect: true),
   ),
   StateQuestion(
     text:
@@ -113,5 +122,6 @@ final questions = [
       const Option(text: "GetX", isCorrect: false),
     ],
     id: 7,
+    correctAnswer: const Option(text: "Scoped Model", isCorrect: true),
   ),
 ];
