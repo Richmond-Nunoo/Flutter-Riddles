@@ -3,17 +3,30 @@ class StateQuestion {
   final String text;
   final List<StateOption> options;
   bool isLocked;
-  StateOption? selectedStateOption;
+  StateOption? selectedWiidgetOption;
   StateOption? correctAnswer;
 
   StateQuestion({
     required this.text,
     required this.options,
     this.isLocked = false,
-    this.selectedStateOption,
+    this.selectedWiidgetOption,
     required this.id,
     required this.correctAnswer,
   });
+  StateQuestion copyWith() {
+    return StateQuestion(
+      id: id,
+      text: text,
+      options: options
+          .map((option) =>
+              StateOption(text: option.text, isCorrect: option.isCorrect))
+          .toList(),
+      isLocked: isLocked,
+      selectedWiidgetOption: selectedWiidgetOption,
+      correctAnswer: correctAnswer,
+    );
+  }
 }
 
 class StateOption {

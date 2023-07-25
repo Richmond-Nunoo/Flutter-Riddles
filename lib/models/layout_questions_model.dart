@@ -3,14 +3,14 @@ class LayOutQuestion {
   final String text;
   final List<LayOutOption> options;
   bool isLocked;
-  LayOutOption? selectedLayOutOption;
+  LayOutOption? selectedWiidgetOption;
   LayOutOption? correctAnswer;
 
   LayOutQuestion({
     required this.text,
     required this.options,
     this.isLocked = false,
-    this.selectedLayOutOption,
+    this.selectedWiidgetOption,
     required this.id,
     required this.correctAnswer,
   });

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class QuizScreen extends StatefulWidget {
   final List<dynamic> questionlenght;
-  final List optionsList;
+  final dynamic optionsList;
   const QuizScreen(
       {super.key, required this.questionlenght, required this.optionsList});
 
@@ -21,6 +21,12 @@ class _QuizScreenState extends State<QuizScreen> {
   void initState() {
     super.initState();
     _controller = PageController(initialPage: 0);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
   }
 
   @override
@@ -50,6 +56,7 @@ class _QuizScreenState extends State<QuizScreen> {
                   itemCount: widget.questionlenght.length,
                   itemBuilder: (context, index) {
                     final myquestions = widget.questionlenght[index];
+                    var optionsIndex = widget.optionsList[index];
 
                     return Column(
                       children: [
@@ -67,29 +74,44 @@ class _QuizScreenState extends State<QuizScreen> {
                           child: ListView.builder(
                             itemCount: myquestions.options.length,
                             itemBuilder: (context, index) {
-                              var option = myquestions.options[index];
                               var color = Colors.grey.shade200;
-
+                              var questionOption = myquestions.options[index];
                               // Check if the tapped option is correct or incorrect
                               if (myquestions.isLocked) {
-                                if (option ==
+                                if (questionOption ==
                                     myquestions.selectedWiidgetOption) {
-                                  color = option.isCorrect
+                                  color = questionOption.isCorrect
                                       ? Colors.green
                                       : Colors.red;
-                                } else if (option.isCorrect) {
+                                } else if (questionOption.isCorrect) {
                                   color = Colors.green;
                                 }
                               }
 
+                              // Check if the tapped option is correct or incorrect
+                              // if (myquestions.isLocked) {
+                              //   if (option ==
+                              //       myquestions.selectedWiidgetOption) {
+                              //     color = option.isCorrect
+                              //         ? Colors.green
+                              //         : Colors.red;
+                              //   } else if (option.isCorrect) {
+                              //     color = Colors.green;
+                              //   }
+                              // }
+
                               return InkWell(
                                 onTap: () {
+                                  for (var option in optionsIndex) {
+                                    print("Option: ${option.text}, ");
+                                  }
+
                                   // Perform any logic you need when an option is tapped
                                   if (!myquestions.isLocked) {
                                     setState(() {
                                       myquestions.isLocked = true;
                                       myquestions.selectedWiidgetOption =
-                                          option;
+                                          questionOption;
                                     });
 
                                     isLocked = myquestions.isLocked;
@@ -98,6 +120,23 @@ class _QuizScreenState extends State<QuizScreen> {
                                       score++;
                                     }
                                   }
+                                  // for (var option in optionsIndex) {
+                                  //   print("Option: ${option.text}, ");
+                                  // }
+                                  // Perform any logic you need when an option is tapped
+                                  // if (!myquestions.isLocked) {
+                                  //   setState(() {
+                                  //     myquestions.isLocked = true;
+                                  //     myquestions.selectedWiidgetOption =
+                                  //         option;
+                                  //   });
+
+                                  //   isLocked = myquestions.isLocked;
+                                  //   if (myquestions
+                                  //       .selectedWiidgetOption.isCorrect) {
+                                  //     score++;
+                                  //   }
+                                  // }
                                 },
                                 child: Container(
                                   height: 50,
@@ -115,7 +154,7 @@ class _QuizScreenState extends State<QuizScreen> {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
-                                        option.text,
+                                        questionOption.text,
                                         style: const TextStyle(fontSize: 16),
                                       ),
                                     ],

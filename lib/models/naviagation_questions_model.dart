@@ -3,14 +3,14 @@ class NavigateQuestion {
   final String text;
   final List<NavigationsOption> options;
   bool isLocked;
-  NavigationsOption? selectedNavigationsOption;
+  NavigationsOption? selectedWiidgetOption;
   NavigationsOption? correctAnswer;
 
   NavigateQuestion({
     required this.text,
     required this.options,
     this.isLocked = false,
-    this.selectedNavigationsOption,
+    this.selectedWiidgetOption,
     required this.id,
     required this.correctAnswer,
   });
@@ -45,11 +45,13 @@ final navigateQuestionsList = [
     options: [
       const NavigationsOption(text: "Navigator.push()", isCorrect: false),
       const NavigationsOption(text: "Navigator.pop()", isCorrect: true),
-      const NavigationsOption(text: "Navigator.removeRoute()", isCorrect: false),
+      const NavigationsOption(
+          text: "Navigator.removeRoute()", isCorrect: false),
       const NavigationsOption(text: " Route.dispose()", isCorrect: false),
     ],
     id: 1,
-    correctAnswer: const NavigationsOption(text: "Navigator.pop()", isCorrect: true),
+    correctAnswer:
+        const NavigationsOption(text: "Navigator.pop()", isCorrect: true),
   ),
   NavigateQuestion(
     text:
@@ -74,7 +76,8 @@ final navigateQuestionsList = [
       const NavigationsOption(text: "Navigator.clear()", isCorrect: false),
     ],
     id: 3,
-    correctAnswer: const NavigationsOption(text: "Navigator.popUntil()", isCorrect: true),
+    correctAnswer:
+        const NavigationsOption(text: "Navigator.popUntil()", isCorrect: true),
   ),
   // other 4
   NavigateQuestion(
@@ -96,14 +99,17 @@ final navigateQuestionsList = [
     text:
         " I am a method that replaces the entire route stack with a single route. Who am I?",
     options: [
-      const NavigationsOption(text: " Navigator.pushReplacement()", isCorrect: true),
+      const NavigationsOption(
+          text: " Navigator.pushReplacement()", isCorrect: true),
       const NavigationsOption(text: "Navigator.reset()", isCorrect: false),
-      const NavigationsOption(text: " Navigator.replaceAll()", isCorrect: false),
-      const NavigationsOption(text: "  Navigator.clearPush()", isCorrect: false),
+      const NavigationsOption(
+          text: " Navigator.replaceAll()", isCorrect: false),
+      const NavigationsOption(
+          text: "  Navigator.clearPush()", isCorrect: false),
     ],
     id: 5,
-    correctAnswer:
-        const NavigationsOption(text: "Navigator.pushReplacement()", isCorrect: true),
+    correctAnswer: const NavigationsOption(
+        text: "Navigator.pushReplacement()", isCorrect: true),
   ),
 
   NavigateQuestion(
@@ -111,12 +117,14 @@ final navigateQuestionsList = [
         "I am a method that closes routes until a condition is met. Who am I?",
     options: [
       const NavigationsOption(text: "Navigator.exitUntil()", isCorrect: false),
-      const NavigationsOption(text: "Navigator.closeAllUntil(),", isCorrect: false),
+      const NavigationsOption(
+          text: "Navigator.closeAllUntil(),", isCorrect: false),
       const NavigationsOption(text: "Navigator.popWhile()", isCorrect: false),
       const NavigationsOption(text: " Navigator.popUntil()", isCorrect: true),
     ],
     id: 6,
-    correctAnswer: const NavigationsOption(text: " Navigator.popUntil()", isCorrect: true),
+    correctAnswer:
+        const NavigationsOption(text: " Navigator.popUntil()", isCorrect: true),
   ),
   NavigateQuestion(
     text:
@@ -141,6 +149,7 @@ final navigateQuestionsList = [
       const NavigationsOption(text: "overlayRoute()", isCorrect: false),
     ],
     id: 8,
-    correctAnswer: const NavigationsOption(text: "Navigator.push()", isCorrect: true),
+    correctAnswer:
+        const NavigationsOption(text: "Navigator.push()", isCorrect: true),
   ),
 ];
