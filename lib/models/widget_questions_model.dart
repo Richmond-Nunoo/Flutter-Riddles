@@ -65,7 +65,7 @@ final widgetQuestionsList = [
       correctAnswer: const Option(text: "Expanded", isCorrect: true)),
   WidgetQuestion(
       text:
-          " I am a circular or elliptical shape with a specific radius. What am I?",
+          "I am a circular or elliptical shape with a specific radius. What am I?",
       options: [
         const Option(text: "ClipRRect", isCorrect: false),
         const Option(text: "DecoratedBox", isCorrect: false),
@@ -131,4 +131,51 @@ final widgetQuestionsList = [
       ],
       id: 7,
       correctAnswer: const Option(text: "Image.network", isCorrect: true)),
+  WidgetQuestion(
+      text:
+          "I give Material apps their signature reactive ink splash effect. Who am I?",
+      options: [
+        const Option(text: "InkWell", isCorrect: true),
+        const Option(text: "GestureDetector", isCorrect: false),
+        const Option(text: "AbsorbPointer", isCorrect: true),
+        const Option(text: "IgnorePointer", isCorrect: false),
+      ],
+      id: 8,
+      correctAnswer: const Option(text: "InkWell", isCorrect: true)),
+
+  WidgetQuestion(
+      text:
+          "I am a widget that provides a material design styled line divider. What am I?",
+      options: [
+        const Option(text: "Divider", isCorrect: true),
+        const Option(text: "SizedBox", isCorrect: false),
+        const Option(text: "Container", isCorrect: false),
+        const Option(text: "ListTile", isCorrect: false),
+      ],
+      id: 9,
+      correctAnswer: const Option(text: "Divider", isCorrect: true)),
+
+  WidgetQuestion(
+      text:
+          "I am a widget that displays a circular material design spinner to indicate loading. What am I?",
+      options: [
+        const Option(text: "LinearProgressIndicator", isCorrect: false),
+        const Option(text: "RefreshIndicator", isCorrect: false),
+        const Option(text: "CircularProgressIndicator", isCorrect: true),
+        const Option(text: "LoadingIndicator", isCorrect: false),
+      ],
+      id: 10,
+      correctAnswer:
+          const Option(text: "CircularProgressIndicator", isCorrect: true)),
+  WidgetQuestion(
+      text:
+          "I am a widget that displays a material design styled tooltip when the user hovers over it. What am I?",
+      options: [
+        const Option(text: "Popover", isCorrect: false),
+        const Option(text: "Tooltip", isCorrect: true),
+        const Option(text: "Snackbar", isCorrect: false),
+        const Option(text: "HintText", isCorrect: false),
+      ],
+      id: 11,
+      correctAnswer: const Option(text: "Tooltip", isCorrect: true)),
 ];

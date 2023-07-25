@@ -1,10 +1,10 @@
-import 'package:flashcards_quiz/views/layout_model.dart';
-import 'package:flashcards_quiz/views/questions_model.dart';
-import 'package:flashcards_quiz/views/state_questions_model.dart';
+
+import 'package:flashcards_quiz/models/layout_questions_model.dart';
+import 'package:flashcards_quiz/models/widget_questions_model.dart';
+import 'package:flashcards_quiz/models/state_questions_model.dart';
 import 'package:flutter/cupertino.dart';
 
 const Color bgColor = Color(0xFF4993FA);
-
 class FlutterTopics {
   final int id;
   final String topicName;

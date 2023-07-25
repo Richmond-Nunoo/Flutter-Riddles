@@ -33,7 +33,6 @@ class MyCustomWidgetState extends State<MyCustomWidget> {
         if (_timerSeconds > 0) {
           _timerSeconds--;
         } else {
-          // Timer expired, navigate to the new screen
           _timer?.cancel();
           navigateToNewScreen();
         }

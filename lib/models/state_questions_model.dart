@@ -41,7 +41,7 @@ final stateQuestions = [
   ),
   StateQuestion(
     text:
-        " I am a Flutter package that enables reactive programming and observable state objects. ",
+        "I am a Flutter package that enables reactive programming and observable state objects. ",
     options: [
       const Option(text: "Riverpod", isCorrect: false),
       const Option(text: "Mobx", isCorrect: true),

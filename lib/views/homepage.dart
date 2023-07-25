@@ -1,7 +1,6 @@
-import 'package:flashcards_quiz/views/category_model.dart';
-import 'package:flashcards_quiz/views/flash_cards.dart';
+import 'package:flashcards_quiz/models/flutter_topics_model.dart';
+import 'package:flashcards_quiz/views/flash_cards_screen.dart';
 import 'package:flip_card/flip_card.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -74,6 +73,7 @@ class HomePage extends StatelessWidget {
                 itemCount: flutterTopicsList.length,
                 itemBuilder: (context, index) {
                   final topicsData = flutterTopicsList[index];
+       
                   return GestureDetector(
                     onTap: () {
                       Navigator.push(
