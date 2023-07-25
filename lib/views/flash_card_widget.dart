@@ -21,6 +21,7 @@ class FlipCardsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FlipCard(
+      onFlipDone: (isFront) => true,
       front: Stack(
         fit: StackFit.loose,
         clipBehavior: Clip.hardEdge,
@@ -141,6 +142,25 @@ class FlipCardsWidget extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Answer",
+                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                              color: Colors.white,
+                              fontSize: 15,
+                            ),
+                      ),
+                      Text(
+                        "$currentIndex/$cardsLenght",
+                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                              color: Colors.white,
+                              fontSize: 15,
+                            ),
+                      ),
+                    ],
+                  ),
                   const Spacer(),
                   Center(
                     child: Text(

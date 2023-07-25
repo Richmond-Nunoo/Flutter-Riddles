@@ -1,7 +1,7 @@
-import 'dart:async';
 import 'package:appinio_swiper/appinio_swiper.dart';
+
 import 'package:flashcards_quiz/views/flash_card_widget.dart';
-import 'package:flashcards_quiz/views/quiz.dart';
+import 'package:flashcards_quiz/views/linear_progress_indicator_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
@@ -23,14 +23,15 @@ class _NewCardState extends State<NewCard> {
   Widget build(BuildContext context) {
     const Color bgColor = Color(0xFF4993FA);
     const Color bgColor3 = Color(0xFF5170FD);
-    final randomQuestions = getRandomQuestions(widget.typeOfTopic, 4);
+    //  final randomQuestions = getRandomQuestions(widget.typeOfTopic, 4);
 
-//     // Get a list of 4 randomly selected WidgetQuestion objects
-//     // Map<WidgetQuestion, Option> randomQuestionsMap =
-//     //     getRandomQuestions(widgetQuestionsList, 4);
+    // Get a list of 4 randomly selected WidgetQuestion objects
+    Map<dynamic, dynamic> randomQuestionsMap =
+        getRandomQuestionsAndOptions(widget.typeOfTopic, 4);
 
-//     // List<WidgetQuestion> randomQuestions = randomQuestionsMap.keys.toList();
-//     // List<Option> correctAnswers = randomQuestionsMap.values.toList();
+    List<dynamic> randomQuestions = randomQuestionsMap.keys.toList();
+    dynamic randomOptions = randomQuestionsMap.values.toList();
+
     return Scaffold(
       backgroundColor: bgColor3,
       body: SafeArea(
@@ -50,15 +51,19 @@ class _NewCardState extends State<NewCard> {
                     Row(
                       children: [
                         IconButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            icon: const Icon(
-                              CupertinoIcons.clear,
-                              color: Colors.white,
-                              weight: 10,
-                            )),
-                        const ProgressIndicator(),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          icon: const Icon(
+                            CupertinoIcons.clear,
+                            color: Colors.white,
+                            weight: 10,
+                          ),
+                        ),
+                        MyProgressIndicator(
+                          questionlenght: randomQuestions,
+                          optionsList: randomOptions,
+                        ),
                       ],
                     ),
                   ],
@@ -83,6 +88,11 @@ class _NewCardState extends State<NewCard> {
                   cardsCount: randomQuestions.length,
                   cardsBuilder: (BuildContext context, int index) {
                     var cardIndex = randomQuestions[index];
+                    var optionsIndex = randomOptions[index];
+                    print("1 ${optionsIndex}");
+                    for (var option in optionsIndex) {
+                      print("Option: ${option.text}, ");
+                    }
                     return FlipCardsWidget(
                       bgColor: bgColor,
                       cardsLenght: randomQuestions.length,
@@ -124,65 +134,29 @@ class _NewCardState extends State<NewCard> {
   }
 }
 
-class ProgressIndicator extends StatefulWidget {
-  const ProgressIndicator({
-    super.key,
-  });
+Map<dynamic, dynamic> getRandomQuestionsAndOptions(
+  List<dynamic> allQuestions,
+  int count,
+) {
+  final randomQuestions = <dynamic>[];
+  final randomOptions = <dynamic>[];
+  final random = Random();
 
-  @override
-  State<ProgressIndicator> createState() => _ProgressIndicatorState();
-}
-
-class _ProgressIndicatorState extends State<ProgressIndicator> {
-  int timerSeconds = 60;
-  Timer? _timer;
-
-  @override
-  void initState() {
-    super.initState();
-    // startTimer();
+  if (count >= allQuestions.length) {
+    count = allQuestions.length;
   }
 
-  void startTimer() {
-    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      setState(() {
-        if (timerSeconds > 0) {
-          timerSeconds--;
-        } else {
-          _timer?.cancel();
-          navigateToNewScreen();
-        }
-      });
-    });
+  while (randomQuestions.length < count) {
+    final randomIndex = random.nextInt(allQuestions.length);
+    final selectedQuestion = allQuestions[randomIndex];
+
+    if (!randomQuestions.contains(selectedQuestion)) {
+      randomQuestions.add(selectedQuestion);
+      randomOptions.add(selectedQuestion.options);
+    }
   }
 
-  void navigateToNewScreen() {
-    Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => const QuizScreen()));
-  }
-
-  @override
-  void dispose() {
-    _timer?.cancel();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    const Color bgColor = Color(0xFF4993FA);
-    return Expanded(
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(12),
-        child: LinearProgressIndicator(
-          minHeight: 10,
-          value: 1 - (timerSeconds / 60),
-          backgroundColor: Colors.blue.shade100,
-          color: Colors.blueGrey,
-          valueColor: const AlwaysStoppedAnimation(bgColor),
-        ),
-      ),
-    );
-  }
+  return Map.fromIterables(randomQuestions, randomOptions);
 }
 
 List<dynamic> getRandomQuestions(List<dynamic> allQuestions, int count) {
@@ -204,31 +178,6 @@ List<dynamic> getRandomQuestions(List<dynamic> allQuestions, int count) {
   }
   return randomQuestions;
 }
-
-// Map<WidgetQuestion, Option> getRandomQuestions(
-//     List<WidgetQuestion> allQuestions, int count) {
-//   if (count >= allQuestions.length) {
-//     // If count is larger than the number of available questions, return all questions with their correct answers.
-//     return {
-//       for (var question in allQuestions)
-//         question: question.options.firstWhere((option) => option.isCorrect)
-//     };
-//   }
-//   final randomQuestions = <WidgetQuestion>[];
-//   final randomAnswers = <Option>[];
-//   List<int> indexes = List.generate(allQuestions.length, (index) => index);
-//   final random = Random();
-//   while (randomQuestions.length < count) {
-//     final randomIndex = random.nextInt(indexes.length);
-//     final selectedQuestionIndex = indexes[randomIndex];
-//     final selectedQuestion = allQuestions[selectedQuestionIndex];
-//     randomQuestions.add(selectedQuestion);
-//     randomAnswers
-//         .add(selectedQuestion.options.firstWhere((option) => option.isCorrect));
-//     indexes.removeAt(randomIndex);
-//   }
-//   return Map.fromIterables(randomQuestions, randomAnswers);
-// }
 
 void _swipe(int index, AppinioSwiperDirection direction) {
   print("the card was swiped to the: ${direction.name}");
