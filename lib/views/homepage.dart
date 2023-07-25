@@ -13,112 +13,123 @@ class HomePage extends StatelessWidget {
     const Color bgColor3 = Color(0xFF5170FD);
     return Scaffold(
       backgroundColor: bgColor3,
-      appBar: AppBar(
-        leadingWidth: 200,
-        backgroundColor: bgColor3,
-        elevation: 0,
-        title: Text(
-          "Flutter Riddle",
-          style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                color: Colors.white,
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.only(top: 0, left: 15, right: 15),
+          child: ListView(
+            physics: const BouncingScrollPhysics(),
+            children: [
+              Container(
+                width: 10,
+                decoration: BoxDecoration(
+                  color: bgColor3,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.24),
+                      blurRadius: 20.0,
+                      offset: const Offset(0.0, 10.0),
+                      spreadRadius: -10,
+                      blurStyle: BlurStyle.outer,
+                    )
+                  ],
+                ),
+                child: Image.asset("assets/dash.png"),
               ),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(
-              CupertinoIcons.equal_circle,
-              size: 32,
-            ),
-            color: Colors.white,
-            onPressed: () {},
-          ),
-        ],
-      ),
-      body: Padding(
-        padding: const EdgeInsets.only(top: 0, left: 15, right: 15),
-        child: ListView(
-          physics: const BouncingScrollPhysics(),
-          children: [
-            const SizedBox(
-              height: 35,
-            ),
-            Text(
-              "What Topic do you want to test yourself on Today?",
-              textAlign: TextAlign.left,
-              style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-                    color: Colors.white,
-                    fontSize: 26,
-                  ),
-            ),
-            const SizedBox(
-              height: 35,
-            ),
-            GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 10,
-                crossAxisSpacing: 10,
-                childAspectRatio: 0.70,
+              const SizedBox(
+                height: 25,
               ),
-              shrinkWrap: true,
-              physics: const BouncingScrollPhysics(),
-              itemCount: flutterTopicsList.length,
-              itemBuilder: (context, index) {
-                final topicsData = flutterTopicsList[index];
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => MyCustomWidget(
-                          typeOfTopic: topicsData.topicQuestions,
-                          topicName: topicsData.topicName,
+              Center(
+                  child: RichText(
+                text:const TextSpan(
+                  children: [
+                    TextSpan(
+                      text: "Riddles",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    TextSpan(
+                      text: "!!!",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 26,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+                textAlign: TextAlign.left,
+              )),
+              const SizedBox(
+                height: 25,
+              ),
+              GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 10,
+                  childAspectRatio: 0.80,
+                ),
+                shrinkWrap: true,
+                physics: const BouncingScrollPhysics(),
+                itemCount: flutterTopicsList.length,
+                itemBuilder: (context, index) {
+                  final topicsData = flutterTopicsList[index];
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MyCustomWidget(
+                            typeOfTopic: topicsData.topicQuestions,
+                            topicName: topicsData.topicName,
+                          ),
+                        ),
+                      );
+                      print(topicsData.topicName);
+                    },
+                    child: Card(
+                      color: bgColor,
+                      elevation: 10,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Icon(
+                              topicsData.topicIcon,
+                              color: Colors.white,
+                              size: 55,
+                            ),
+                            const SizedBox(
+                              height: 15,
+                            ),
+                            Text(
+                              topicsData.topicName,
+                              textAlign: TextAlign.center,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineSmall!
+                                  .copyWith(
+                                    fontSize: 18,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                            )
+                          ],
                         ),
                       ),
-                    );
-                    print(topicsData.topicName);
-                  },
-                  child: Card(
-                    color: bgColor,
-                    elevation: 10,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Icon(
-                            topicsData.topicIcon,
-                            color: Colors.white,
-                            size: 55,
-                          ),
-                          const SizedBox(
-                            height: 15,
-                          ),
-                          Text(
-                            topicsData.topicName,
-                            textAlign: TextAlign.center,
-                            style: Theme.of(context)
-                                .textTheme
-                                .headlineSmall!
-                                .copyWith(
-                                  fontSize: 18,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w300,
-                                ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                );
-              },
-            ),
-          ],
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
