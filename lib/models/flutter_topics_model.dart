@@ -1,10 +1,11 @@
-
 import 'package:flashcards_quiz/models/layout_questions_model.dart';
+import 'package:flashcards_quiz/models/naviagation_questions_model.dart';
 import 'package:flashcards_quiz/models/widget_questions_model.dart';
 import 'package:flashcards_quiz/models/state_questions_model.dart';
 import 'package:flutter/cupertino.dart';
 
 const Color bgColor = Color(0xFF4993FA);
+
 class FlutterTopics {
   final int id;
   final String topicName;
@@ -33,22 +34,20 @@ final List<FlutterTopics> flutterTopicsList = [
     topicColor: bgColor,
     topicIcon: CupertinoIcons.arrow_2_circlepath,
     topicName: "State Management",
-    topicQuestions: stateQuestions,
+    topicQuestions: stateQuestionsList,
   ),
   FlutterTopics(
     id: 2,
     topicColor: bgColor,
-    topicIcon: CupertinoIcons.graph_circle,
-    topicName: "App LifeCycle",
-    topicQuestions: widgetQuestionsList,
+    topicIcon: CupertinoIcons.paperplane,
+    topicName: "Navigation and Routing",
+    topicQuestions: navigateQuestionsList,
   ),
-
   FlutterTopics(
     id: 3,
     topicColor: bgColor,
     topicIcon: CupertinoIcons.rectangle_arrow_up_right_arrow_down_left,
     topicName: "Layouts and UI",
-    topicQuestions: layOutQuestions,
+    topicQuestions: layOutQuestionsList,
   ),
-
 ];

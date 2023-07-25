@@ -26,7 +26,7 @@ class Option {
   });
 }
 
-final stateQuestions = [
+final stateQuestionsList = [
   StateQuestion(
     text:
         "I am a simple method to manage state within a StatefulWidget. What am I?",
@@ -123,5 +123,57 @@ final stateQuestions = [
     ],
     id: 7,
     correctAnswer: const Option(text: "Scoped Model", isCorrect: true),
+  ),
+
+  StateQuestion(
+    text:
+        " I am the method in a StatefulWidget that is called when the widget is being removed from the widget tree. What am I?",
+    options: [
+      const Option(text: "initState()", isCorrect: false),
+      const Option(text: "onDestroy()", isCorrect: false),
+      const Option(text: "dispose()", isCorrect: true),
+      const Option(text: "setState()", isCorrect: false),
+    ],
+    id: 8,
+    correctAnswer: const Option(text: "dispose()", isCorrect: true),
+  ),
+
+  StateQuestion(
+    text:
+        "I am the first thing that happens when a Flutter app is launched. I am called by the Dart VM. What am I?",
+    options: [
+      const Option(text: "main()", isCorrect: true),
+      const Option(text: "onDestroy()", isCorrect: false),
+      const Option(text: "dispose()", isCorrect: false),
+      const Option(text: "onCreate()", isCorrect: false),
+    ],
+    id: 9,
+    correctAnswer: const Option(text: "main()", isCorrect: true),
+  ),
+
+  StateQuestion(
+    text:
+        "I am called after the main() function. I am responsible for creating the Flutter app's root widget. What am I?",
+    options: [
+      const Option(text: "main()", isCorrect: false),
+      const Option(text: "runApp()", isCorrect: true),
+      const Option(text: "dispose()", isCorrect: false),
+      const Option(text: "onCreate()", isCorrect: false),
+    ],
+    id: 10,
+    correctAnswer: const Option(text: "runApp()", isCorrect: true),
+  ),
+
+  StateQuestion(
+    text:
+        "I am a method that notifies the framework that the internal state of a StatefulWidget has changed. This triggers a rebuild. What am I?",
+    options: [
+      const Option(text: "Provider", isCorrect: false),
+      const Option(text: "runApp()", isCorrect: false),
+      const Option(text: "setState()", isCorrect: true),
+      const Option(text: "onCreate()", isCorrect: false),
+    ],
+    id: 10,
+    correctAnswer: const Option(text: "setState()", isCorrect: true),
   ),
 ];

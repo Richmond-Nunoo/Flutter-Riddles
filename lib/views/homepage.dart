@@ -73,7 +73,6 @@ class HomePage extends StatelessWidget {
                 itemCount: flutterTopicsList.length,
                 itemBuilder: (context, index) {
                   final topicsData = flutterTopicsList[index];
-       
                   return GestureDetector(
                     onTap: () {
                       Navigator.push(

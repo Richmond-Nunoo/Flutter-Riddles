@@ -1,0 +1,47 @@
+Question: I am a property that uniquely identifies a widget and allows it to be updated efficiently. What am I?
+Answer: key
+Wrong answers: id, name, tag
+
+Question: I am a mechanism that allows you to incorporate platform-specific UI elements into a Flutter app. What am I?
+Answer: Platform channels
+Wrong answers: Native view, JNI, Bridge
+
+Question: I am the default font family used by Flutter's Material Design widgets. What am I?
+Answer: Roboto
+Wrong answers: Arial, Helvetica, System
+
+Question: I am a Material Design widget that displays a popup menu from a button press. What am I?
+Answer: PopupMenuButton
+Wrong answers: DropdownButton, Menu, PopupButton
+
+Question: I am a widget that aligns and spaces out multiple child widgets horizontally or vertically. What am I?
+Answer: Row / Column
+Wrong answers: Padding, Container, Stack
+
+Question: I am a gesture detector that recognizes tap, drag and scale gestures on a widget. What am I?
+Answer: GestureDetector
+Wrong answers: InkWell, Button, Touchable
+
+Question: I am a folder that allows you to organize project files into modules or features. What am I?
+Answer: lib/src
+Wrong answers: app, lib, modules
+
+Question: I am the programming language used to build Flutter apps. What am I?
+Answer: Dart
+Wrong answers: Java, Kotlin, Swift
+
+Question: I am the name of the tool used to format, analyze and optimize Flutter code. What am I?
+Answer: dartfmt
+Wrong answers: dartstyle, formatter, beautify
+
+Question: I am the folder containing assets like images, fonts, json files etc. What am I?
+Answer: assets
+Wrong answers: resources, static, lib/assets
+
+Question: I am the Flutter class imported to use design widgets like Scaffold, AppBar and Text. What am I?
+Answer: MaterialApp
+Wrong answers: Material, Widgets, MaterialComponents
+
+Question: I am the base class for all immutable widgets in Flutter. What am I?
+Answer: StatelessWidget
+Wrong answers: Widget, Component, View

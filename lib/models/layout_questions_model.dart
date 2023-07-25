@@ -26,7 +26,7 @@ class Option {
   });
 }
 
-final layOutQuestions = [
+final layOutQuestionsList = [
   LayOutQuestion(
     text: "I control how widgets are placed vertically in a column. Who am I?",
     options: [

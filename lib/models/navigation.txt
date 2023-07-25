@@ -1,0 +1,103 @@
+
+
+
+Question: I am a widget that manages a stack of child widgets and allows for navigating between them. What am I?
+Answer: Navigator
+Wrong answers: Route, Scaffold, PageView
+
+Question: I am an object that contains information for generating a screen. I control transitions between screens. What am I?
+Answer: Route
+Wrong answers: Navigator, BuildContext, Screen
+
+Question: I am a method that removes the current route from the stack and returns to the previous route. What am I?
+Answer: Navigator.pop()
+Wrong answers: Navigator.push(), Navigator.removeRoute(), Route.dispose()
+
+Question: I am a pre-defined route that provides a platform-adaptive transition animation. What am I?
+Answer: MaterialPageRoute
+Wrong answers: CupertinoPageRoute, PageTransition, FadeRoute
+
+Question: I am a widget property that must be passed to navigation methods like Navigator.push() to specify the next screen. What am I?
+Answer: context
+Wrong answers: BuildContext, Scaffold, State
+
+
+Question: I am the method that closes all routes in the history stack to pop to the first route. What am I?
+Answer: Navigator.popUntil()
+Wrong answers: Navigator.reset(), Navigator.exitAll(), Navigator.clear()
+
+Question: I am a class for declaratively building a navigation structure and managing route history. Who am I?
+Answer: Navigator
+Wrong answers: RouteManager, PageNavigator, ScreenNavigator
+
+Question: I am a widget that renders navigation bars and draws platform adaptive transitions between routes. Who am I?
+Answer: MaterialApp
+Wrong answers: NavigationApp, RouteApp, RouterApp
+
+Question: I am a method that adds a named route to the top of the navigator stack. Who am I?
+Answer: Navigator.pushNamed()
+Wrong answers: Navigator.routeTo(), Navigator.openRoute(), Navigator.navigate()
+
+Question: I am a type of route that defines a custom transition animation. Who am I?
+Answer: PageRouteBuilder
+Wrong answers: AnimatedRoute, CustomRoute, DynamicRoute
+
+Question: I am an annotation used to mark a class as a route destination. Who am I?
+Answer: @Route
+Wrong answers: @Screen, @Page, @Navigator
+
+Question: I am a widget property used to access navigator functions like Navigator.of(). Who am I?
+Answer: context
+Wrong answers: navigator, scaffold, buildContext
+
+Question: I am the base class for immutable route information like settings and arguments. Who am I?
+Answer: RouteSettings
+Wrong answers: RouteInfo, RouteData, RouteDetails
+
+Question: I am a method that closes the active route and returns to previous route. Who am I?
+Answer: Navigator.pop()
+Wrong answers: goBack(), returnTo(), exitRoute()
+
+Question: I am a method that replaces the entire route stack with a single route. Who am I?
+Answer: Navigator.pushReplacement()
+Wrong answers: Navigator.reset(), Navigator.replaceAll(), Navigator.clearPush()
+
+Question: I am an annotation used to mark a function that generates a route. Who am I?
+Answer: @generateRoute
+Wrong answers: @routeGenerator, @createRoute, @makeRoute
+
+Question: I am the base class for routes that transition between pages. Who am I?
+Answer: PageRoute
+Wrong answers: ScreenRoute, NavigationRoute, RouterRoute
+
+Question: I am the route name passed to Navigator methods like pushNamed(). Who am I?
+Answer: routeName
+Wrong answers: pageId, path, routePath
+
+Question: I am the class imported to use Cupertino style navigation patterns. Who am I?
+Answer: CupertinoApp
+Wrong answers: IOSTabBar, CupertinoNavigator, AppleRouter
+
+Question: I am a method that closes routes until a condition is met. Who am I?
+Answer: Navigator.popUntil()
+Wrong answers: Navigator.popWhile(), Navigator.closeAllUntil(), Navigator.exitUntil()
+
+Question: I am an object that contains route settings like arguments and keys. Who am I?
+Answer: RouteSettings
+Wrong answers: RouteArgs, RouteDetails, PageSettings
+
+Question: I am the name of the default route passed to MaterialApp. Who am I?
+Answer: '/'
+Wrong answers: 'home', 'default', 'start'
+
+Question: I am a property in MaterialPageRoute containing widget args. Who am I?
+Answer: settings.arguments
+Wrong answers: args, payload, parameter
+
+Question: I am an event fired when a route is popped to transition back. Who am I?
+Answer: willPopRoute
+Wrong answers: onPop, didPop, popRoute
+
+Question: I am a method that adds a route to the history without removing current. Who am I?
+Answer: Navigator.push()
+Wrong answers: openRoute(), overlayRoute(), stackRoute()
