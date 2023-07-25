@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:appinio_swiper/appinio_swiper.dart';
-import 'package:flashcards_quiz/views/homepage.dart';
+import 'package:flashcards_quiz/views/flash_card_widget.dart';
 import 'package:flashcards_quiz/views/quiz.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -23,9 +23,14 @@ class _NewCardState extends State<NewCard> {
   Widget build(BuildContext context) {
     const Color bgColor = Color(0xFF4993FA);
     const Color bgColor3 = Color(0xFF5170FD);
-
     final randomQuestions = getRandomQuestions(widget.typeOfTopic, 4);
 
+//     // Get a list of 4 randomly selected WidgetQuestion objects
+//     // Map<WidgetQuestion, Option> randomQuestionsMap =
+//     //     getRandomQuestions(widgetQuestionsList, 4);
+
+//     // List<WidgetQuestion> randomQuestions = randomQuestionsMap.keys.toList();
+//     // List<Option> correctAnswers = randomQuestionsMap.values.toList();
     return Scaffold(
       backgroundColor: bgColor3,
       body: SafeArea(
@@ -135,7 +140,7 @@ class _ProgressIndicatorState extends State<ProgressIndicator> {
   @override
   void initState() {
     super.initState();
-   // startTimer();
+    // startTimer();
   }
 
   void startTimer() {
@@ -209,13 +214,10 @@ List<dynamic> getRandomQuestions(List<dynamic> allQuestions, int count) {
 //         question: question.options.firstWhere((option) => option.isCorrect)
 //     };
 //   }
-
 //   final randomQuestions = <WidgetQuestion>[];
 //   final randomAnswers = <Option>[];
-
 //   List<int> indexes = List.generate(allQuestions.length, (index) => index);
 //   final random = Random();
-
 //   while (randomQuestions.length < count) {
 //     final randomIndex = random.nextInt(indexes.length);
 //     final selectedQuestionIndex = indexes[randomIndex];
@@ -223,10 +225,8 @@ List<dynamic> getRandomQuestions(List<dynamic> allQuestions, int count) {
 //     randomQuestions.add(selectedQuestion);
 //     randomAnswers
 //         .add(selectedQuestion.options.firstWhere((option) => option.isCorrect));
-
 //     indexes.removeAt(randomIndex);
 //   }
-
 //   return Map.fromIterables(randomQuestions, randomAnswers);
 // }
 
