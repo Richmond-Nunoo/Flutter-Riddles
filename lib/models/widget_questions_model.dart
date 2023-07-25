@@ -178,4 +178,52 @@ final widgetQuestionsList = [
       ],
       id: 11,
       correctAnswer: const Option(text: "Tooltip", isCorrect: true)),
+  WidgetQuestion(
+      text:
+          "I am the folder containing assets like images, fonts, json files etc. What am I?",
+      options: [
+        const Option(text: "static", isCorrect: false),
+        const Option(text: "assets", isCorrect: true),
+        const Option(text: "resources", isCorrect: false),
+        const Option(text: "images", isCorrect: false),
+      ],
+      id: 11,
+      correctAnswer: const Option(text: "assets", isCorrect: true)),
+
+  WidgetQuestion(
+      text:
+          "I am the programming language used to build Flutter apps. What am I?",
+      options: [
+        const Option(text: "Dart", isCorrect: true),
+        const Option(text: "Java", isCorrect: false),
+        const Option(text: "Swift", isCorrect: false),
+        const Option(text: "Kotlin", isCorrect: false),
+      ],
+      id: 11,
+      correctAnswer: const Option(text: "Dart", isCorrect: true)),
+
+  WidgetQuestion(
+    text:
+        "I am a mechanism that allows you to incorporate platform-specific UI elements into a Flutter app. What am I?",
+    options: [
+      const Option(text: "Native view", isCorrect: false),
+      const Option(text: "Platform channels", isCorrect: true),
+      const Option(text: "JNI", isCorrect: false),
+      const Option(text: "Bridge", isCorrect: false),
+    ],
+    id: 11,
+    correctAnswer: const Option(text: "Platform channels", isCorrect: true),
+  ),
+  WidgetQuestion(
+    text:
+        "I am a property that uniquely identifies a widget and allows it to be updated efficiently. What am I?",
+    options: [
+      const Option(text: "key", isCorrect: true),
+      const Option(text: "id", isCorrect: false),
+      const Option(text: "name", isCorrect: false),
+      const Option(text: "tag", isCorrect: false),
+    ],
+    id: 11,
+    correctAnswer: const Option(text: "key", isCorrect: true),
+  ),
 ];
