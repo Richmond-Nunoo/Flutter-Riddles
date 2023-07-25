@@ -1,3 +1,4 @@
+import 'package:flashcards_quiz/views/layout_model.dart';
 import 'package:flashcards_quiz/views/questions_model.dart';
 import 'package:flashcards_quiz/views/state_questions_model.dart';
 import 'package:flutter/cupertino.dart';
@@ -41,11 +42,13 @@ final List<FlutterTopics> flutterTopicsList = [
     topicName: "App LifeCycle",
     topicQuestions: widgetQuestionsList,
   ),
+
   FlutterTopics(
     id: 3,
     topicColor: bgColor,
     topicIcon: CupertinoIcons.rectangle_arrow_up_right_arrow_down_left,
     topicName: "Layouts and UI",
-    topicQuestions: widgetQuestionsList,
+    topicQuestions: layOutQuestions,
   ),
+
 ];

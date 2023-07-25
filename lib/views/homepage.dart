@@ -39,29 +39,26 @@ class HomePage extends StatelessWidget {
                 height: 25,
               ),
               Center(
-                  child: RichText(
-                text:const TextSpan(
-                  children: [
-                    TextSpan(
-                      text: "Riddles",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    TextSpan(
-                      text: "!!!",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 26,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
+                child: RichText(
+                  text: TextSpan(
+                    children: [
+                      for (var i = 0; i < "Riddles!!!".length; i++) ...[
+                        TextSpan(
+                          text: "Riddles!!!"[i],
+                          style: Theme.of(context)
+                              .textTheme
+                              .headlineSmall!
+                              .copyWith(
+                                fontSize: 20 + i.toDouble(),
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                              ),
+                        )
+                      ]
+                    ],
+                  ),
                 ),
-                textAlign: TextAlign.left,
-              )),
+              ),
               const SizedBox(
                 height: 25,
               ),
