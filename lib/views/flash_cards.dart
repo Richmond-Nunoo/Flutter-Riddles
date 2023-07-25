@@ -7,8 +7,9 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 class MyCustomWidget extends StatefulWidget {
+  final String topicName;
   final List<dynamic> typeOfTopic;
-  const MyCustomWidget({super.key, required this.typeOfTopic});
+  const MyCustomWidget({super.key, required this.typeOfTopic, required this.topicName});
 
   @override
   MyCustomWidgetState createState() => MyCustomWidgetState();
@@ -57,7 +58,6 @@ class MyCustomWidgetState extends State<MyCustomWidget> {
     const Color bgColor3 = Color(0xFF5170FD);
 
     final randomQuestions = getRandomQuestions(widget.typeOfTopic, 4);
-
 
     // Get a list of 3 randomly selected WidgetQuestion objects
     // Map<WidgetQuestion, Option> randomQuestionsMap =
@@ -130,10 +130,11 @@ class MyCustomWidgetState extends State<MyCustomWidget> {
                   cardsBuilder: (BuildContext context, int index) {
                     var cardIndex = randomQuestions[index];
                     return FlipCardsWidget(
-                   
                       bgColor: bgColor,
                       cardsLenght: randomQuestions.length,
-                      currentIndex: index + 1, answer: cardIndex.correctAnswer.text, question:  cardIndex.text,
+                      currentIndex: index + 1,
+                      answer: cardIndex.correctAnswer.text,
+                      question: cardIndex.text, currentTopic: widget.topicName,
                     );
                   },
                 ),

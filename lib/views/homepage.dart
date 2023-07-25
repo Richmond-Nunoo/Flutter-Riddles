@@ -1,8 +1,5 @@
-import 'package:flashcards_quiz/views/answersmodel.dart';
 import 'package:flashcards_quiz/views/category_model.dart';
 import 'package:flashcards_quiz/views/flash_cards.dart';
-import 'package:flashcards_quiz/views/model.dart';
-import 'package:flashcards_quiz/views/questions_model.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -58,7 +55,6 @@ class HomePage extends StatelessWidget {
             const SizedBox(
               height: 35,
             ),
-
             GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
@@ -78,6 +74,7 @@ class HomePage extends StatelessWidget {
                       MaterialPageRoute(
                         builder: (context) => MyCustomWidget(
                           typeOfTopic: topicsData.topicQuestions,
+                          topicName: topicsData.topicName,
                         ),
                       ),
                     );
@@ -121,20 +118,6 @@ class HomePage extends StatelessWidget {
                 );
               },
             ),
-
-            // Center(
-            //   child: ElevatedButton(
-            //     onPressed: () {
-            //       Navigator.push(
-            //         context,
-            //         MaterialPageRoute(
-            //           builder: (context) => const MyCustomWidget(),
-            //         ),
-            //       );
-            //     },
-            //     child: const Text("Flash Cards"),
-            //   ),
-            // ),
           ],
         ),
       ),
@@ -143,20 +126,21 @@ class HomePage extends StatelessWidget {
 }
 
 class FlipCardsWidget extends StatelessWidget {
-  const FlipCardsWidget({
-    super.key,
-    required this.bgColor,
-    required this.currentIndex,
-    required this.cardsLenght,
-    required this.question,
-    required this.answer,
-  });
+  const FlipCardsWidget(
+      {super.key,
+      required this.bgColor,
+      required this.currentIndex,
+      required this.cardsLenght,
+      required this.question,
+      required this.answer,
+      required this.currentTopic});
 
   final Color bgColor;
   final int currentIndex;
   final int cardsLenght;
   final String question;
   final String answer;
+  final String currentTopic;
 
   @override
   Widget build(BuildContext context) {
@@ -179,7 +163,7 @@ class FlipCardsWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Which Widget?",
+                        currentTopic,
                         style: Theme.of(context)
                             .textTheme
                             .bodySmall!
@@ -242,7 +226,7 @@ class FlipCardsWidget extends StatelessWidget {
           ),
           Positioned(
             right: -100,
-            bottom: 40,
+            bottom: 20,
             child: Container(
               height: 200,
               width: 200,
