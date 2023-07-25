@@ -1,6 +1,8 @@
 import 'package:flashcards_quiz/views/answersmodel.dart';
 import 'package:flashcards_quiz/views/category_model.dart';
+import 'package:flashcards_quiz/views/flash_cards.dart';
 import 'package:flashcards_quiz/views/model.dart';
+import 'package:flashcards_quiz/views/questions_model.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -71,6 +73,10 @@ class HomePage extends StatelessWidget {
                 final topicsData = flutterTopicsList[index];
                 return GestureDetector(
                   onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const MyCustomWidget()));
                     print(topicsData.topicName);
                   },
                   child: Card(
@@ -137,7 +143,6 @@ class FlipCardsWidget extends StatelessWidget {
     super.key,
     required this.bgColor,
     required this.candidate,
-    required this.answerCandidate,
     required this.currentIndex,
     required this.cardsLenght,
   });
@@ -146,8 +151,8 @@ class FlipCardsWidget extends StatelessWidget {
   final int currentIndex;
   final int cardsLenght;
 
-  final ExampleCandidateModel candidate;
-  final AnswerCandidateModel answerCandidate;
+  final WidgetQuestion candidate;
+
 
   @override
   Widget build(BuildContext context) {
@@ -188,9 +193,11 @@ class FlipCardsWidget extends StatelessWidget {
                   const Spacer(),
                   Center(
                     child: Text(
-                      candidate.name!,
-                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      candidate.text,
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                             color: Colors.white,
+                            fontSize: 24,
+                            fontWeight: FontWeight.w500,
                           ),
                       textAlign: TextAlign.center,
                     ),
@@ -283,7 +290,7 @@ class FlipCardsWidget extends StatelessWidget {
                   const Spacer(),
                   Center(
                     child: Text(
-                      answerCandidate.name!,
+                      candidate.correctAnswer.text,
                       style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                             color: Colors.white,
                           ),
