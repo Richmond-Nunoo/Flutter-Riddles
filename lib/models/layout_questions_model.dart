@@ -14,6 +14,22 @@ class LayOutQuestion {
     required this.id,
     required this.correctAnswer,
   });
+
+  LayOutQuestion copyWith() {
+    return LayOutQuestion(
+      id: id,
+      text: text,
+      options: options
+          .map(
+            (option) =>
+                LayOutOption(text: option.text, isCorrect: option.isCorrect),
+          )
+          .toList(),
+      isLocked: isLocked,
+      selectedWiidgetOption: selectedWiidgetOption,
+      correctAnswer: correctAnswer,
+    );
+  }
 }
 
 class LayOutOption {

@@ -16,6 +16,14 @@ class ResultsScreen extends StatelessWidget {
           automaticallyImplyLeading: false,
           title: const Text("Results"),
           centerTitle: true,
+          actions: [
+            IconButton(
+              onPressed: () {
+                        Navigator.popUntil(context, (route) => route.isFirst);
+              },
+              icon: const Icon(Icons.close),
+            )
+          ],
         ),
         body: Center(
           child: Text("$score"),

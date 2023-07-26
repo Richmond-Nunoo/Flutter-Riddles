@@ -1,7 +1,6 @@
 import 'package:appinio_swiper/appinio_swiper.dart';
-
-import 'package:flashcards_quiz/views/flash_card_widget.dart';
-import 'package:flashcards_quiz/views/linear_progress_indicator_widget.dart';
+import 'package:flashcards_quiz/widgets/flash_card_widget.dart';
+import 'package:flashcards_quiz/widgets/linear_progress_indicator_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
@@ -78,10 +77,6 @@ class _NewCardState extends State<NewCard> {
                   unlimitedUnswipe: true,
                   controller: controller,
                   unswipe: _unswipe,
-                  onSwiping: (AppinioSwiperDirection direction) {
-                    print("${direction.index}");
-                    debugPrint(direction.toString());
-                  },
                   onSwipe: _swipe,
                   onEnd: _onEnd,
                   cardsCount: randomQuestions.length,
@@ -111,7 +106,7 @@ class _NewCardState extends State<NewCard> {
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.white),
                   fixedSize: MaterialStateProperty.all(
-                    Size(MediaQuery.of(context).size.width * 0.75, 40),
+                    Size(MediaQuery.sizeOf(context).width * 0.75, 40),
                   ),
                   elevation: MaterialStateProperty.all(1),
                 ),
@@ -158,25 +153,25 @@ Map<dynamic, dynamic> getRandomQuestionsAndOptions(
   return Map.fromIterables(randomQuestions, randomOptions);
 }
 
-List<dynamic> getRandomQuestions(List<dynamic> allQuestions, int count) {
-  if (count >= allQuestions.length) {
-    return List.from(allQuestions);
-  }
-  List<dynamic> randomQuestions = [];
+// List<dynamic> getRandomQuestions(List<dynamic> allQuestions, int count) {
+//   if (count >= allQuestions.length) {
+//     return List.from(allQuestions);
+//   }
+//   List<dynamic> randomQuestions = [];
 
-  List<int> indexes = List.generate(allQuestions.length, (index) => index);
-  final random = Random();
+//   List<int> indexes = List.generate(allQuestions.length, (index) => index);
+//   final random = Random();
 
-  while (randomQuestions.length < count) {
-    final randomIndex = random.nextInt(indexes.length);
-    final selectedQuestionIndex = indexes[randomIndex];
-    final selectedQuestion = allQuestions[selectedQuestionIndex];
-    randomQuestions.add(selectedQuestion);
+//   while (randomQuestions.length < count) {
+//     final randomIndex = random.nextInt(indexes.length);
+//     final selectedQuestionIndex = indexes[randomIndex];
+//     final selectedQuestion = allQuestions[selectedQuestionIndex];
+//     randomQuestions.add(selectedQuestion);
 
-    indexes.removeAt(randomIndex);
-  }
-  return randomQuestions;
-}
+//     indexes.removeAt(randomIndex);
+//   }
+//   return randomQuestions;
+// }
 
 void _swipe(int index, AppinioSwiperDirection direction) {
   print("the card was swiped to the: ${direction.name}");

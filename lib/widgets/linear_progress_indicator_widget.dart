@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:flashcards_quiz/views/quiz.dart';
+import 'package:flashcards_quiz/views/quiz_screens.dart';
 import 'package:flutter/material.dart';
 
 class MyProgressIndicator extends StatefulWidget {
@@ -16,7 +16,7 @@ class MyProgressIndicator extends StatefulWidget {
 }
 
 class _MyProgressIndicatorState extends State<MyProgressIndicator> {
-  int timerSeconds = 9;
+  int timerSeconds = 20;
   Timer? _timer;
 
   @override
@@ -39,11 +39,14 @@ class _MyProgressIndicatorState extends State<MyProgressIndicator> {
   }
 
   void navigateToNewScreen() {
-    Navigator.of(context).pushReplacement(MaterialPageRoute(
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(
         builder: (context) => QuizScreen(
-              questionlenght: widget.questionlenght,
-              optionsList: widget.optionsList,
-            )));
+          questionlenght: widget.questionlenght,
+          optionsList: widget.optionsList,
+        ),
+      ),
+    );
   }
 
   @override
@@ -60,7 +63,7 @@ class _MyProgressIndicatorState extends State<MyProgressIndicator> {
         borderRadius: BorderRadius.circular(12),
         child: LinearProgressIndicator(
           minHeight: 10,
-          value: 1 - (timerSeconds / 9),
+          value: 1 - (timerSeconds / 20),
           backgroundColor: Colors.blue.shade100,
           color: Colors.blueGrey,
           valueColor: const AlwaysStoppedAnimation(bgColor),
@@ -69,29 +72,3 @@ class _MyProgressIndicatorState extends State<MyProgressIndicator> {
     );
   }
 }
-
-
-// Map<WidgetQuestion, Option> getRandomQuestions(
-//     List<WidgetQuestion> allQuestions, int count) {
-//   if (count >= allQuestions.length) {
-//     // If count is larger than the number of available questions, return all questions with their correct answers.
-//     return {
-//       for (var question in allQuestions)
-//         question: question.options.firstWhere((option) => option.isCorrect)
-//     };
-//   }
-//   final randomQuestions = <WidgetQuestion>[];
-//   final randomAnswers = <Option>[];
-//   List<int> indexes = List.generate(allQuestions.length, (index) => index);
-//   final random = Random();
-//   while (randomQuestions.length < count) {
-//     final randomIndex = random.nextInt(indexes.length);
-//     final selectedQuestionIndex = indexes[randomIndex];
-//     final selectedQuestion = allQuestions[selectedQuestionIndex];
-//     randomQuestions.add(selectedQuestion);
-//     randomAnswers
-//         .add(selectedQuestion.options.firstWhere((option) => option.isCorrect));
-//     indexes.removeAt(randomIndex);
-//   }
-//   return Map.fromIterables(randomQuestions, randomAnswers);
-// }

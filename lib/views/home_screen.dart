@@ -47,9 +47,9 @@ class HomePage extends StatelessWidget {
                               .textTheme
                               .headlineSmall!
                               .copyWith(
-                                fontSize: 20 + i.toDouble(),
+                                fontSize: 21 + i.toDouble(),
                                 color: Colors.white,
-                                fontWeight: FontWeight.w500,
+                                fontWeight: FontWeight.w400,
                               ),
                         )
                       ]

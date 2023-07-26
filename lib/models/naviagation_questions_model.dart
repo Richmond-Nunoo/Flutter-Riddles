@@ -14,6 +14,20 @@ class NavigateQuestion {
     required this.id,
     required this.correctAnswer,
   });
+
+  NavigateQuestion copyWith() {
+    return NavigateQuestion(
+      id: id,
+      text: text,
+      options: options
+          .map((option) =>
+              NavigationsOption(text: option.text, isCorrect: option.isCorrect))
+          .toList(),
+      isLocked: isLocked,
+      selectedWiidgetOption: selectedWiidgetOption,
+      correctAnswer: correctAnswer,
+    );
+  }
 }
 
 class NavigationsOption {
