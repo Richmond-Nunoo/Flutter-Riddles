@@ -43,26 +43,23 @@ class _NewCardState extends State<NewCard> {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 alignment: Alignment.topCenter,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Row(
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          icon: const Icon(
-                            CupertinoIcons.clear,
-                            color: Colors.white,
-                            weight: 10,
-                          ),
-                        ),
-                        MyProgressIndicator(
-                          questionlenght: randomQuestions,
-                          optionsList: randomOptions,
-                        ),
-                      ],
+                    IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: const Icon(
+                        CupertinoIcons.clear,
+                        color: Colors.white,
+                        weight: 10,
+                      ),
+                    ),
+                    MyProgressIndicator(
+                      questionlenght: randomQuestions,
+                      optionsList: randomOptions,
                     ),
                   ],
                 ),
@@ -82,11 +79,7 @@ class _NewCardState extends State<NewCard> {
                   cardsCount: randomQuestions.length,
                   cardsBuilder: (BuildContext context, int index) {
                     var cardIndex = randomQuestions[index];
-                    var optionsIndex = randomOptions[index];
-                    print("1 ${optionsIndex}");
-                    for (var option in optionsIndex) {
-                      print("Option: ${option.text}, ");
-                    }
+
                     return FlipCardsWidget(
                       bgColor: bgColor,
                       cardsLenght: randomQuestions.length,
@@ -106,9 +99,9 @@ class _NewCardState extends State<NewCard> {
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.white),
                   fixedSize: MaterialStateProperty.all(
-                    Size(MediaQuery.sizeOf(context).width * 0.75, 40),
+                    Size(MediaQuery.sizeOf(context).width * 0.80, 40),
                   ),
-                  elevation: MaterialStateProperty.all(1),
+                  elevation: MaterialStateProperty.all(4),
                 ),
                 onPressed: () => controller.unswipe(),
                 child: const Text(

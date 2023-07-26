@@ -26,7 +26,7 @@ class _QuizScreenState extends State<QuizScreen> {
 
   @override
   Widget build(BuildContext context) {
-    const Color bgColor3 = Color(0xFF5170FD);
+   // const Color bgColor3 = Color(0xFF5170FD);
     return WillPopScope(
       onWillPop: () {
         Navigator.popUntil(context, (route) => route.isFirst);

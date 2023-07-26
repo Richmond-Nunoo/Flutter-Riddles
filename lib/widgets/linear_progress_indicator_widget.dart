@@ -62,7 +62,7 @@ class _MyProgressIndicatorState extends State<MyProgressIndicator> {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(12),
         child: LinearProgressIndicator(
-          minHeight: 10,
+          minHeight: 20,
           value: 1 - (timerSeconds / 20),
           backgroundColor: Colors.blue.shade100,
           color: Colors.blueGrey,

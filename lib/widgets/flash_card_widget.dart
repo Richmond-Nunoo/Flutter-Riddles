@@ -30,6 +30,15 @@ class FlipCardsWidget extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               color: bgColor,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.24),
+                  blurRadius: 20.0,
+                  offset: const Offset(0.0, 10.0),
+                  spreadRadius: 10,
+                  blurStyle: BlurStyle.outer,
+                )
+              ],
             ),
             child: Padding(
               padding: const EdgeInsets.only(
