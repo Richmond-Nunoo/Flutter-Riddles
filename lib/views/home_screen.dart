@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
                 child: Image.asset("assets/dash.png"),
               ),
               const SizedBox(
-                height: 25,
+                height: 10,
               ),
               Center(
                 child: RichText(
@@ -58,14 +58,14 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 25,
+                height: 10,
               ),
               GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   mainAxisSpacing: 10,
                   crossAxisSpacing: 10,
-                  childAspectRatio: 0.80,
+                  childAspectRatio: 0.85,
                 ),
                 shrinkWrap: true,
                 physics: const BouncingScrollPhysics(),

@@ -25,7 +25,20 @@ class ResultsScreen extends StatelessWidget {
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              //    crossAxisAlignment: CrossAxisAlignment.end,
               children: [
+                Align(
+                  alignment: Alignment.topRight,
+                  child: IconButton(
+                    onPressed: () {
+                      Navigator.popUntil(context, (route) => route.isFirst);
+                    },
+                    icon: const Icon(
+                      Icons.close,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
                 Padding(
                   padding: const EdgeInsets.all(13.0),
                   child: RichText(
@@ -36,7 +49,11 @@ class ResultsScreen extends StatelessWidget {
                           style: Theme.of(context)
                               .textTheme
                               .headlineSmall!
-                              .copyWith(color: Colors.white, fontSize: 20),
+                              .copyWith(
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w400,
+                              ),
                         ),
                         for (var i = 0; i < "Riddles!!!".length; i++) ...[
                           TextSpan(
@@ -45,7 +62,7 @@ class ResultsScreen extends StatelessWidget {
                                 .textTheme
                                 .headlineSmall!
                                 .copyWith(
-                                  fontSize: 21 + i.toDouble(),
+                                  fontSize: 18 + i.toDouble(),
                                   color: Colors.white,
                                   fontWeight: FontWeight.w400,
                                 ),
@@ -64,26 +81,55 @@ class ResultsScreen extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18.0),
                         ),
-                        child: Column(
-                          children: [
-                            const Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Expanded(
                                 child: Center(
-                              child: Text("1"),
-                            )),
-                            CustomPaint(
-                              painter: DrawDottedhorizontalline(),
-                            ),
-                            const Expanded(
+                                  child: RichText(
+                                    textAlign: TextAlign.center,
+                                    text: TextSpan(
+                                      children: [
+                                        TextSpan(
+                                          text:
+                                              "Congratulations! You have Scored \n \n",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyLarge,
+                                        ),
+                                        TextSpan(
+                                          text: "$roundedPercentageScore%",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyLarge!
+                                              .copyWith(
+                                                fontSize: 30,
+                                              ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              CustomPaint(
+                                painter: DrawDottedhorizontalline(),
+                              ),
+                              const Expanded(
                                 flex: 2,
                                 child: Center(
                                   child: Text("2"),
-                                ))
-                          ],
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                       Positioned(
                         left: -10,
-                        top: MediaQuery.of(context).size.height * 0.175,
+                        top: MediaQuery.of(context).size.height * 0.170,
                         child: Container(
                           height: 25,
                           width: 25,
@@ -93,7 +139,7 @@ class ResultsScreen extends StatelessWidget {
                       ),
                       Positioned(
                         right: -10,
-                        top: MediaQuery.of(context).size.height * 0.175,
+                        top: MediaQuery.of(context).size.height * 0.170,
                         child: Container(
                           height: 25,
                           width: 25,
@@ -119,7 +165,7 @@ class ResultsScreen extends StatelessWidget {
                     Navigator.popUntil(context, (route) => route.isFirst);
                   },
                   child: const Text(
-                    "Take another Riddle",
+                    "Take another test",
                     style: TextStyle(
                       color: Colors.blue,
                       fontSize: 15,
@@ -127,7 +173,6 @@ class ResultsScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                // Text("${roundedPercentageScore}%"),
               ],
             ),
           ),

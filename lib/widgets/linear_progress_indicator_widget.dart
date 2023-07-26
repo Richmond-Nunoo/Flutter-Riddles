@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:flashcards_quiz/views/quiz_screens.dart';
+import 'package:flashcards_quiz/views/quiz_screen.dart';
 import 'package:flutter/material.dart';
 
 class MyProgressIndicator extends StatefulWidget {
@@ -18,7 +18,7 @@ class MyProgressIndicator extends StatefulWidget {
 }
 
 class _MyProgressIndicatorState extends State<MyProgressIndicator> {
-  int timerSeconds = 20;
+  int timerSeconds = 45;
   Timer? _timer;
 
   @override
@@ -66,7 +66,7 @@ class _MyProgressIndicatorState extends State<MyProgressIndicator> {
         borderRadius: BorderRadius.circular(12),
         child: LinearProgressIndicator(
           minHeight: 20,
-          value: 1 - (timerSeconds / 20),
+          value: 1 - (timerSeconds / 45),
           backgroundColor: Colors.blue.shade100,
           color: Colors.blueGrey,
           valueColor: const AlwaysStoppedAnimation(bgColor),

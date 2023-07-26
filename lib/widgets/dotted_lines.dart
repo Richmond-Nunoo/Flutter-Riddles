@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class DrawDottedhorizontalline extends CustomPainter {
   final Paint _paint;
   DrawDottedhorizontalline() : _paint = Paint() {
-    _paint.color = Colors.black; // dots color
+    _paint.color = Colors.grey.shade400; // dots color
     _paint.strokeWidth = 2; // dots thickness
     _paint.strokeCap = StrokeCap.square; // dots corner edges
   }

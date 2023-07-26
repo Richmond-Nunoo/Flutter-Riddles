@@ -1,4 +1,5 @@
 import 'package:appinio_swiper/appinio_swiper.dart';
+import 'package:flashcards_quiz/views/quiz_screen.dart';
 import 'package:flashcards_quiz/widgets/flash_card_widget.dart';
 import 'package:flashcards_quiz/widgets/linear_progress_indicator_widget.dart';
 import 'package:flutter/cupertino.dart';
@@ -38,10 +39,10 @@ class _NewCardState extends State<NewCard> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(
-                height: 40,
+                height: 10,
               ),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                padding: const EdgeInsets.only(right: 18.0),
                 alignment: Alignment.topCenter,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -66,9 +67,10 @@ class _NewCardState extends State<NewCard> {
                 ),
               ),
               SizedBox(
-                width: MediaQuery.of(context).size.width * 0.95,
+                width: MediaQuery.of(context).size.width * 0.92,
                 height: MediaQuery.of(context).size.height * 0.60,
                 child: AppinioSwiper(
+                  padding: const EdgeInsets.all(10),
                   loop: true,
                   backgroundCardsCount: 2,
                   swipeOptions: const AppinioSwipeOptions.all(),
@@ -80,7 +82,6 @@ class _NewCardState extends State<NewCard> {
                   cardsCount: randomQuestions.length,
                   cardsBuilder: (BuildContext context, int index) {
                     var cardIndex = randomQuestions[index];
-
                     return FlipCardsWidget(
                       bgColor: bgColor,
                       cardsLenght: randomQuestions.length,
@@ -93,25 +94,51 @@ class _NewCardState extends State<NewCard> {
                 ),
               ),
               const SizedBox(
-                height: 50,
+                height: 40,
               ),
-              Center(
-                child: ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.white),
-                    fixedSize: MaterialStateProperty.all(
-                      Size(MediaQuery.sizeOf(context).width * 0.80, 40),
-                    ),
-                    elevation: MaterialStateProperty.all(4),
+              ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.white),
+                  fixedSize: MaterialStateProperty.all(
+                    Size(MediaQuery.sizeOf(context).width * 0.80, 30),
                   ),
-                  onPressed: () => controller.unswipe(),
-                  child: const Text(
-                    "Reset Card",
-                    style: TextStyle(
-                      color: bgColor,
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
+                  elevation: MaterialStateProperty.all(4),
+                ),
+                onPressed: () => controller.unswipe(),
+                child: const Text(
+                  "Reset Card",
+                  style: TextStyle(
+                    color: bgColor,
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.white),
+                  fixedSize: MaterialStateProperty.all(
+                    Size(MediaQuery.sizeOf(context).width * 0.80, 30),
+                  ),
+                  elevation: MaterialStateProperty.all(4),
+                ),
+                onPressed: () {
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                      builder: (context) => QuizScreen(
+                        questionlenght: randomQuestions,
+                        optionsList: randomOptions,
+                        topicType: widget.topicName,
+                      ),
                     ),
+                  );
+                },
+                child: const Text(
+                  "Start Quiz",
+                  style: TextStyle(
+                    color: bgColor,
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               )
