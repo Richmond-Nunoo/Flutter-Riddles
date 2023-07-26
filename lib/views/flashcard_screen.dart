@@ -70,7 +70,7 @@ class _NewCardState extends State<NewCard> {
                 height: MediaQuery.of(context).size.height * 0.60,
                 child: AppinioSwiper(
                   loop: true,
-                  backgroundCardsCount: 1,
+                  backgroundCardsCount: 2,
                   swipeOptions: const AppinioSwipeOptions.all(),
                   unlimitedUnswipe: true,
                   controller: controller,
@@ -96,24 +96,25 @@ class _NewCardState extends State<NewCard> {
                 height: 50,
               ),
               Center(
-                  child: ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.white),
-                  fixedSize: MaterialStateProperty.all(
-                    Size(MediaQuery.sizeOf(context).width * 0.80, 40),
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.white),
+                    fixedSize: MaterialStateProperty.all(
+                      Size(MediaQuery.sizeOf(context).width * 0.80, 40),
+                    ),
+                    elevation: MaterialStateProperty.all(4),
                   ),
-                  elevation: MaterialStateProperty.all(4),
-                ),
-                onPressed: () => controller.unswipe(),
-                child: const Text(
-                  "Reset Card",
-                  style: TextStyle(
-                    color: bgColor,
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
+                  onPressed: () => controller.unswipe(),
+                  child: const Text(
+                    "Reset Card",
+                    style: TextStyle(
+                      color: bgColor,
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
-              ))
+              )
             ],
           ),
         ),

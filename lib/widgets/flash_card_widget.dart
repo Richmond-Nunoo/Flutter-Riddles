@@ -1,4 +1,5 @@
 import 'package:flip_card/flip_card.dart';
+
 import 'package:flutter/material.dart';
 
 class FlipCardsWidget extends StatelessWidget {
@@ -21,7 +22,7 @@ class FlipCardsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FlipCard(
-      onFlipDone: (isFront) => true,
+      side: CardSide.FRONT,
       front: Stack(
         fit: StackFit.loose,
         clipBehavior: Clip.hardEdge,

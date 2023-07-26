@@ -5,7 +5,7 @@ class LayOutQuestion {
   bool isLocked;
   LayOutOption? selectedWiidgetOption;
   LayOutOption? correctAnswer;
- // final int timeSeconds;
+  // final int timeSeconds;
 
   LayOutQuestion({
     required this.text,
@@ -14,7 +14,7 @@ class LayOutQuestion {
     this.selectedWiidgetOption,
     required this.id,
     required this.correctAnswer,
-  //  required this.timeSeconds
+    //  required this.timeSeconds
   });
 
   LayOutQuestion copyWith() {
@@ -141,7 +141,7 @@ final layOutQuestionsList = [
       const LayOutOption(text: "Expanded", isCorrect: false),
       const LayOutOption(text: "Flex ", isCorrect: true),
       const LayOutOption(text: "FittedBox", isCorrect: false),
-      const LayOutOption(text: "Wrao", isCorrect: false),
+      const LayOutOption(text: "Wrap", isCorrect: false),
     ],
     id: 7,
     correctAnswer: const LayOutOption(text: "Scoped Model", isCorrect: true),
