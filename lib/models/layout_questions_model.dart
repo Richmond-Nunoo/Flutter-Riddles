@@ -5,6 +5,7 @@ class LayOutQuestion {
   bool isLocked;
   LayOutOption? selectedWiidgetOption;
   LayOutOption? correctAnswer;
+ // final int timeSeconds;
 
   LayOutQuestion({
     required this.text,
@@ -13,6 +14,7 @@ class LayOutQuestion {
     this.selectedWiidgetOption,
     required this.id,
     required this.correctAnswer,
+  //  required this.timeSeconds
   });
 
   LayOutQuestion copyWith() {

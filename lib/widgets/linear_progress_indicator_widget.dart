@@ -5,10 +5,12 @@ import 'package:flutter/material.dart';
 class MyProgressIndicator extends StatefulWidget {
   final List<dynamic> questionlenght;
   final dynamic optionsList;
+  final String topicType;
   const MyProgressIndicator({
     super.key,
     required this.questionlenght,
     required this.optionsList,
+    required this.topicType,
   });
 
   @override
@@ -44,6 +46,7 @@ class _MyProgressIndicatorState extends State<MyProgressIndicator> {
         builder: (context) => QuizScreen(
           questionlenght: widget.questionlenght,
           optionsList: widget.optionsList,
+          topicType: widget.topicType,
         ),
       ),
     );

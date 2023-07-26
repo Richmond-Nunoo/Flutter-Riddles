@@ -60,6 +60,7 @@ class _NewCardState extends State<NewCard> {
                     MyProgressIndicator(
                       questionlenght: randomQuestions,
                       optionsList: randomOptions,
+                      topicType: widget.topicName,
                     ),
                   ],
                 ),
