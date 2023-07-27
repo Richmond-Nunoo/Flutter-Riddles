@@ -25,6 +25,7 @@ class _QuizScreenState extends State<QuizScreen> {
   PageController _controller = PageController();
   int score = 0;
   bool isLocked = false;
+  List optionsLetters = ["A.", "B.", "C.", "D."];
 
   void startTimerOnQuestions() {
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
@@ -218,6 +219,7 @@ class _QuizScreenState extends State<QuizScreen> {
 
                                           var questionOption =
                                               myquestions.options[index];
+                                          final letters = optionsLetters[index];
 
                                           if (myquestions.isLocked) {
                                             if (questionOption ==
@@ -271,7 +273,7 @@ class _QuizScreenState extends State<QuizScreen> {
                                                         .spaceBetween,
                                                 children: [
                                                   Text(
-                                                    questionOption.text,
+                                                    "$letters ${questionOption.text}",
                                                     style: const TextStyle(
                                                         fontSize: 16),
                                                   ),
@@ -336,7 +338,7 @@ class _QuizScreenState extends State<QuizScreen> {
       onPressed: () {
         if (_questionNumber < widget.questionlenght.length) {
           _controller.nextPage(
-            duration: const Duration(milliseconds: 600),
+            duration: const Duration(milliseconds: 800),
             curve: Curves.easeInOut,
           );
           setState(() {
@@ -363,6 +365,11 @@ class _QuizScreenState extends State<QuizScreen> {
         _questionNumber < widget.questionlenght.length
             ? 'Next Page'
             : 'See the Result',
+        style: Theme.of(context).textTheme.bodySmall!.copyWith(
+              color: Colors.white,
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+            ),
       ),
     );
   }

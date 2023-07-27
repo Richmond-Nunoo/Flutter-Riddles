@@ -79,7 +79,6 @@ class FlipCardsWidget extends StatelessWidget {
                             fontWeight: FontWeight.w500,
                           ),
                       textAlign: TextAlign.center,
-                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                   const Spacer(),

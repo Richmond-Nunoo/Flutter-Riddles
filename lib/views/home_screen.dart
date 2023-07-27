@@ -18,7 +18,6 @@ class HomePage extends StatelessWidget {
             physics: const BouncingScrollPhysics(),
             children: [
               Container(
-                width: 10,
                 decoration: BoxDecoration(
                   color: bgColor3,
                   boxShadow: [

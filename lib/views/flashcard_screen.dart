@@ -35,8 +35,10 @@ class _NewCardState extends State<NewCard> {
       backgroundColor: bgColor3,
       body: SafeArea(
         child: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+          child: ListView(
+            physics: const BouncingScrollPhysics(),
+            padding: EdgeInsets.all(16),
+//            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(
                 height: 10,
@@ -94,54 +96,58 @@ class _NewCardState extends State<NewCard> {
                 ),
               ),
               const SizedBox(
-                height: 40,
+                height: 50,
               ),
-              ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.white),
-                  fixedSize: MaterialStateProperty.all(
-                    Size(MediaQuery.sizeOf(context).width * 0.80, 30),
-                  ),
-                  elevation: MaterialStateProperty.all(4),
-                ),
-                onPressed: () => controller.unswipe(),
-                child: const Text(
-                  "Reset Card",
-                  style: TextStyle(
-                    color: bgColor,
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.white),
-                  fixedSize: MaterialStateProperty.all(
-                    Size(MediaQuery.sizeOf(context).width * 0.80, 30),
-                  ),
-                  elevation: MaterialStateProperty.all(4),
-                ),
-                onPressed: () {
-                  Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(
-                      builder: (context) => QuizScreen(
-                        questionlenght: randomQuestions,
-                        optionsList: randomOptions,
-                        topicType: widget.topicName,
+              Column(
+                children: [
+                  ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.white),
+                      fixedSize: MaterialStateProperty.all(
+                        Size(MediaQuery.of(context).size.width * 0.85, 30),
+                      ),
+                      elevation: MaterialStateProperty.all(4),
+                    ),
+                    onPressed: () => controller.unswipe(),
+                    child: const Text(
+                      "Reorder Cards",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                  );
-                },
-                child: const Text(
-                  "Start Quiz",
-                  style: TextStyle(
-                    color: bgColor,
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
                   ),
-                ),
-              )
+                  ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.white),
+                      fixedSize: MaterialStateProperty.all(
+                        Size(MediaQuery.sizeOf(context).width * 0.85, 30),
+                      ),
+                      elevation: MaterialStateProperty.all(4),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          builder: (context) => QuizScreen(
+                            questionlenght: randomQuestions,
+                            optionsList: randomOptions,
+                            topicType: widget.topicName,
+                          ),
+                        ),
+                      );
+                    },
+                    child: const Text(
+                      "Start Quiz",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ],
           ),
         ),
