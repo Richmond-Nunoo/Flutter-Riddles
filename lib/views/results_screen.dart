@@ -3,9 +3,13 @@ import 'package:flutter/material.dart';
 
 class ResultsScreen extends StatelessWidget {
   const ResultsScreen(
-      {super.key, required this.score, required this.totalQuestions});
+      {super.key,
+      required this.score,
+      required this.totalQuestions,
+      required this.whichTopic});
   final int score;
   final int totalQuestions;
+  final String whichTopic;
 
   @override
   Widget build(BuildContext context) {
@@ -39,38 +43,41 @@ class ResultsScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(13.0),
-                  child: RichText(
-                    text: TextSpan(
-                      children: [
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                        text: "Results On Your ",
+                        style:
+                            Theme.of(context).textTheme.headlineSmall!.copyWith(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                      ),
+                      for (var i = 0; i < "Riddles!!!".length; i++) ...[
                         TextSpan(
-                          text: "Results On Your ",
+                          text: "Riddles!!!"[i],
                           style: Theme.of(context)
                               .textTheme
                               .headlineSmall!
                               .copyWith(
+                                fontSize: 18 + i.toDouble(),
                                 color: Colors.white,
-                                fontSize: 18,
                                 fontWeight: FontWeight.w400,
                               ),
                         ),
-                        for (var i = 0; i < "Riddles!!!".length; i++) ...[
-                          TextSpan(
-                            text: "Riddles!!!"[i],
-                            style: Theme.of(context)
-                                .textTheme
-                                .headlineSmall!
-                                .copyWith(
-                                  fontSize: 18 + i.toDouble(),
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                          ),
-                        ]
-                      ],
-                    ),
+                      ]
+                    ],
                   ),
+                ),
+                Text(
+                  whichTopic.toUpperCase(),
+                  style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                        fontSize: 15,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w400,
+                      ),
                 ),
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.88,

@@ -46,7 +46,7 @@ class FlipCardsWidget extends StatelessWidget {
                 top: 20,
                 left: 15,
                 right: 15,
-                bottom: 15,
+                bottom: 5,
               ),
               child: Column(
                 children: [
@@ -75,10 +75,11 @@ class FlipCardsWidget extends StatelessWidget {
                       question,
                       style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                             color: Colors.white,
-                            fontSize: 24,
+                            fontSize: 20,
                             fontWeight: FontWeight.w500,
                           ),
                       textAlign: TextAlign.center,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                   const Spacer(),

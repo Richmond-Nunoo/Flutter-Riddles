@@ -65,6 +65,7 @@ class _QuizScreenState extends State<QuizScreen> {
           builder: (context) => ResultsScreen(
             score: score,
             totalQuestions: widget.questionlenght.length,
+            whichTopic: widget.topicType,
           ),
         ),
       );
@@ -319,7 +320,7 @@ class _QuizScreenState extends State<QuizScreen> {
     for (var question in widget.questionlenght) {
       question.isLocked = false;
     }
-    questionTimerSeconds = 10;
+    questionTimerSeconds = 20;
   }
 
   ElevatedButton buildElevatedButton() {
@@ -352,6 +353,7 @@ class _QuizScreenState extends State<QuizScreen> {
               builder: (context) => ResultsScreen(
                 score: score,
                 totalQuestions: widget.questionlenght.length,
+                whichTopic: widget.topicType,
               ),
             ),
           );
