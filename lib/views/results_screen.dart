@@ -18,6 +18,7 @@ class ResultsScreen extends StatelessWidget {
     print(totalQuestions);
     final double percentageScore = (score / totalQuestions) * 100;
     final int roundedPercentageScore = percentageScore.round();
+    const Color cardColor = Color(0xFF4993FA);
     return WillPopScope(
       onWillPop: () {
         Navigator.popUntil(context, (route) => route.isFirst);
@@ -102,6 +103,7 @@ class ResultsScreen extends StatelessWidget {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18.0),
                           ),
+                          elevation: 5,
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Column(
@@ -114,12 +116,25 @@ class ResultsScreen extends StatelessWidget {
                                       textAlign: TextAlign.center,
                                       text: TextSpan(
                                         children: [
+                                          for (var ii = 0;
+                                              ii < "Congratulations!,".length;
+                                              ii++) ...[
+                                            TextSpan(
+                                              text: "Congratulations!,"[ii],
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyMedium!
+                                                  .copyWith(
+                                                      fontSize:
+                                                          12 + ii.toDouble()),
+                                            ),
+                                          ],
+                                          //m'adamfo(Twi) -my friend
                                           TextSpan(
-                                            text:
-                                                "Congratulations!! m'adamfo\n You have Scored  \n",
+                                            text: "  m'adamfo\n You Scored  \n",
                                             style: Theme.of(context)
                                                 .textTheme
-                                                .bodyLarge,
+                                                .bodySmall,
                                           ),
                                           TextSpan(
                                             text: "$roundedPercentageScore%",
@@ -153,7 +168,7 @@ class ResultsScreen extends StatelessWidget {
                                                       .bodyLarge!
                                                       .copyWith(
                                                         fontWeight:
-                                                            FontWeight.w600,
+                                                            FontWeight.w400,
                                                       ),
                                                 ),
                                                 Image.asset(
@@ -169,7 +184,7 @@ class ResultsScreen extends StatelessWidget {
                                           : Column(
                                               children: [
                                                 Text(
-                                                  "I know I can do better!!",
+                                                  "I know You can do better!!",
                                                   style: Theme.of(context)
                                                       .textTheme
                                                       .bodyLarge!
@@ -222,7 +237,7 @@ class ResultsScreen extends StatelessWidget {
                   ),
                   ElevatedButton(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.white),
+                      backgroundColor: MaterialStateProperty.all(cardColor),
                       fixedSize: MaterialStateProperty.all(
                         Size(MediaQuery.sizeOf(context).width * 0.80, 40),
                       ),
@@ -234,7 +249,7 @@ class ResultsScreen extends StatelessWidget {
                     child: const Text(
                       "Take another test",
                       style: TextStyle(
-                        color: Colors.black,
+                        color: Colors.white,
                         fontSize: 15,
                         fontWeight: FontWeight.bold,
                       ),

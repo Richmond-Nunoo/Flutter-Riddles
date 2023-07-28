@@ -326,10 +326,12 @@ class _QuizScreenState extends State<QuizScreen> {
   }
 
   ElevatedButton buildElevatedButton() {
-    const Color bgColor3 = Color(0xFF5170FD);
+    //  const Color bgColor3 = Color(0xFF5170FD);
+    const Color cardColor = Color(0xFF4993FA);
+
     return ElevatedButton(
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(bgColor3),
+        backgroundColor: MaterialStateProperty.all(cardColor),
         fixedSize: MaterialStateProperty.all(
           Size(MediaQuery.sizeOf(context).width * 0.80, 40),
         ),
@@ -363,11 +365,11 @@ class _QuizScreenState extends State<QuizScreen> {
       },
       child: Text(
         _questionNumber < widget.questionlenght.length
-            ? 'Next Page'
-            : 'See the Result',
+            ? 'Next Question'
+            : 'Result',
         style: Theme.of(context).textTheme.bodySmall!.copyWith(
               color: Colors.white,
-              fontSize: 18,
+              fontSize: 16,
               fontWeight: FontWeight.w500,
             ),
       ),

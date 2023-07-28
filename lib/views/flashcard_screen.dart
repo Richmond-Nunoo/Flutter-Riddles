@@ -21,8 +21,9 @@ class _NewCardState extends State<NewCard> {
 
   @override
   Widget build(BuildContext context) {
-    const Color bgColor = Color(0xFF4993FA);
+    //const Color bgColor = Color(0xFF4993FA);
     const Color bgColor3 = Color(0xFF5170FD);
+    const Color cardColor = Color(0xFF4993FA);
 
     // Get a list of 4 randomly selected WidgetQuestion objects
     Map<dynamic, dynamic> randomQuestionsMap =
@@ -36,9 +37,8 @@ class _NewCardState extends State<NewCard> {
       body: SafeArea(
         child: Center(
           child: ListView(
-            physics: const BouncingScrollPhysics(),
-            padding: EdgeInsets.all(16),
-//            crossAxisAlignment: CrossAxisAlignment.center,
+            physics: const AlwaysScrollableScrollPhysics(),
+            padding: const EdgeInsets.all(16),
             children: [
               const SizedBox(
                 height: 10,
@@ -85,7 +85,7 @@ class _NewCardState extends State<NewCard> {
                   cardsBuilder: (BuildContext context, int index) {
                     var cardIndex = randomQuestions[index];
                     return FlipCardsWidget(
-                      bgColor: bgColor,
+                      bgColor: cardColor,
                       cardsLenght: randomQuestions.length,
                       currentIndex: index + 1,
                       answer: cardIndex.correctAnswer.text,
@@ -102,7 +102,7 @@ class _NewCardState extends State<NewCard> {
                 children: [
                   ElevatedButton(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.white),
+                      backgroundColor: MaterialStateProperty.all(cardColor),
                       fixedSize: MaterialStateProperty.all(
                         Size(MediaQuery.of(context).size.width * 0.85, 30),
                       ),
@@ -112,7 +112,7 @@ class _NewCardState extends State<NewCard> {
                     child: const Text(
                       "Reorder Cards",
                       style: TextStyle(
-                        color: Colors.black,
+                        color: Colors.white,
                         fontSize: 15,
                         fontWeight: FontWeight.bold,
                       ),
@@ -120,7 +120,7 @@ class _NewCardState extends State<NewCard> {
                   ),
                   ElevatedButton(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.white),
+                      backgroundColor: MaterialStateProperty.all(cardColor),
                       fixedSize: MaterialStateProperty.all(
                         Size(MediaQuery.sizeOf(context).width * 0.85, 30),
                       ),
@@ -140,7 +140,7 @@ class _NewCardState extends State<NewCard> {
                     child: const Text(
                       "Start Quiz",
                       style: TextStyle(
-                        color: Colors.black,
+                        color: Colors.white,
                         fontSize: 15,
                         fontWeight: FontWeight.bold,
                       ),
