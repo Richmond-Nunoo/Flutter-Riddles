@@ -196,9 +196,7 @@ class _QuizScreenState extends State<QuizScreen> {
 
                                 return Column(
                                   children: [
-                                    // const SizedBox(
-                                    //   height: 32,
-                                    // ),
+                                  
                                     Text(
                                       myquestions.text,
                                       style: Theme.of(context)
