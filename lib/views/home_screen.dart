@@ -39,6 +39,15 @@ class HomePage extends StatelessWidget {
                 child: RichText(
                   text: TextSpan(
                     children: [
+                      TextSpan(
+                        text: "Flutter ",
+                        style:
+                            Theme.of(context).textTheme.headlineSmall!.copyWith(
+                                  fontSize: 21,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                      ),
                       for (var i = 0; i < "Riddles!!!".length; i++) ...[
                         TextSpan(
                           text: "Riddles!!!"[i],
