@@ -6,13 +6,14 @@ class WidgetQuestion {
   WiidgetOption? selectedWiidgetOption;
   WiidgetOption correctAnswer;
 
-  WidgetQuestion(
-      {required this.text,
-      required this.options,
-      this.isLocked = false,
-      this.selectedWiidgetOption,
-      required this.id,
-      required this.correctAnswer});
+  WidgetQuestion({
+    required this.text,
+    required this.options,
+    this.isLocked = false,
+    this.selectedWiidgetOption,
+    required this.id,
+    required this.correctAnswer,
+  });
 
   WidgetQuestion copyWith() {
     return WidgetQuestion(

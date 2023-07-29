@@ -74,10 +74,9 @@ class FlipCardsWidget extends StatelessWidget {
                     child: Text(
                       question,
                       style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500,
-                          ),
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500),
                       textAlign: TextAlign.center,
                     ),
                   ),
