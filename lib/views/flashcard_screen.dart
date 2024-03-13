@@ -72,17 +72,21 @@ class _NewCardState extends State<NewCard> {
                 width: MediaQuery.of(context).size.width * 0.92,
                 height: MediaQuery.of(context).size.height * 0.60,
                 child: AppinioSwiper(
-                  padding: const EdgeInsets.all(10),
-                  loop: true,
-                  backgroundCardsCount: 2,
-                  swipeOptions: const AppinioSwipeOptions.all(),
-                  unlimitedUnswipe: true,
+                  invertAngleOnBottomDrag: true,
+                  backgroundCardCount: 3,
+                  swipeOptions: const SwipeOptions.all(),
                   controller: controller,
-                  unswipe: _unswipe,
-                  onSwipe: _swipe,
+                  onCardPositionChanged: (
+                      SwiperPosition position,
+                      ) {
+                    //debugPrint('${position.offset.toAxisDirection()}, '
+                    //    '${position.offset}, '
+                    //    '${position.angle}');
+                  },
+                  onSwipeEnd: _swipeEnd,
                   onEnd: _onEnd,
-                  cardsCount: randomQuestions.length,
-                  cardsBuilder: (BuildContext context, int index) {
+                  cardCount: randomQuestions.length,
+                  cardBuilder: (BuildContext context, int index) {
                     var cardIndex = randomQuestions[index];
                     return FlipCardsWidget(
                       bgColor: cardColor,
@@ -201,8 +205,8 @@ Map<dynamic, dynamic> getRandomQuestionsAndOptions(
 //   return randomQuestions;
 // }
 
-void _swipe(int index, AppinioSwiperDirection direction) {
-  print("the card was swiped to the: ${direction.name}");
+void _swipe(int index) {
+  // print("the card was swiped to the: ");
   print(index);
 }
 
@@ -211,6 +215,24 @@ void _unswipe(bool unswiped) {
     print("SUCCESS: card was unswiped");
   } else {
     print("FAIL: no card left to unswipe");
+  }
+}
+
+void _swipeEnd(int previousIndex, int targetIndex, SwiperActivity activity) {
+  switch (activity) {
+    case Swipe():
+      print("Swipe()");
+
+      break;
+    case Unswipe():
+      print("UnSwipe()");
+      break;
+    case CancelSwipe():
+      print("CancelSwipe()");
+      break;
+    case DrivenActivity():
+      print("DrivenActivity()");
+      break;
   }
 }
 
